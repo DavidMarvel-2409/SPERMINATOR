@@ -104,7 +104,11 @@ MonoBehaviour:
   velocidadRotacion: 4
   Ovulo: {fileID: 0}
   Objetivo1: {fileID: 0}
+  Objetivo1_2: {fileID: 0}
+  Objetivo1_3: {fileID: 0}
   Objetivo2: {fileID: 0}
+  Objetivo2_2: {fileID: 0}
+  Objetivo2_3: {fileID: 0}
   Objetivo3: {fileID: 0}
   Objetivo3_2: {fileID: 0}
   Objetivo3_3: {fileID: 0}

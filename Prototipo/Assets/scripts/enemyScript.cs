@@ -13,7 +13,11 @@ public class enemyScript : MonoBehaviour
     public GameObject Ovulo;
     
     public GameObject Objetivo1;
+    public GameObject Objetivo1_2;
+    public GameObject Objetivo1_3;
     public GameObject Objetivo2;
+    public GameObject Objetivo2_2;
+    public GameObject Objetivo2_3;
     public GameObject Objetivo3;
     public GameObject Objetivo3_2;
     public GameObject Objetivo3_3;
@@ -36,23 +40,35 @@ public class enemyScript : MonoBehaviour
         //Debug.Log(Ovulo.transform);
         
     }
-    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov, GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2, GameObject a5_3)
+    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3, GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2, GameObject a5_3)
     {
         Objetivo1 = a1;
+        Objetivo1_2 = a1_2;
+        Objetivo1_3 = a1_3;
         Objetivo2 = a2;
+        Objetivo2_3 = a2_2;
+        Objetivo2_3 = a2_3;
         Objetivo3 = a3;
-        Objetivo4 = a4;
-        Objetivo5 = a5;
-
         Objetivo3_2 = a3_2;
         Objetivo3_3 = a3_3;
+        Objetivo4 = a4;
         Objetivo4_2 = a4_2;
         Objetivo4_3 = a4_3;
+        Objetivo5 = a5;
         Objetivo5_2 = a5_2;
         Objetivo5_3 = a5_3;
-
-        Objetivo_Auxiliar = a1;
-
+        switch (select_op())
+        {
+            case 0:
+                Objetivo_Auxiliar = a1;
+                break;
+            case 1:
+                Objetivo_Auxiliar = a1_2;
+                break;
+            case 2:
+                Objetivo_Auxiliar = a1_3;
+                break;
+        }
         Ovulo = ov;
     }
     // Update is called once per frame
@@ -92,14 +108,23 @@ public class enemyScript : MonoBehaviour
 
     private void Cambio_de_objetivo(GameObject _Actual)
     {
-        if (_Actual == Objetivo1)
+        if (_Actual == Objetivo1 || _Actual == Objetivo1_2 || _Actual == Objetivo1_3)
         {
-            Objetivo_Auxiliar = Objetivo2;
+            switch (select_op())
+            {
+                case 0:
+                    Objetivo_Auxiliar = Objetivo2;
+                    break;
+                case 1:
+                    Objetivo_Auxiliar = Objetivo2_2;
+                    break;
+                case 2:
+                    Objetivo_Auxiliar = Objetivo2_3;
+                    break;
+            }
         }
         else if (_Actual == Objetivo2)
         {
-            int op = select_op();
-            Debug.Log(op);
             switch (select_op())
             {
                 case 0:

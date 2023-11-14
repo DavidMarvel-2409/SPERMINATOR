@@ -14,15 +14,18 @@ public class creadorEnemigos : MonoBehaviour
     public int maxAttempts = 100; // Número máximo de intentos
 
     public GameObject ob1;
+    public GameObject ob1_2;
+    public GameObject ob1_3;
     public GameObject ob2;
+    public GameObject ob2_2;
+    public GameObject ob2_3;
     public GameObject ob3;
-    public GameObject ob4;
-    public GameObject ob5;
-
     public GameObject ob3_2;
     public GameObject ob3_3;
+    public GameObject ob4;
     public GameObject ob4_2;
     public GameObject ob4_3;
+    public GameObject ob5;
     public GameObject ob5_2;
     public GameObject ob5_3;
 
@@ -73,7 +76,7 @@ public class creadorEnemigos : MonoBehaviour
 
         enemys.SetActive(true);
         GameObject enemy = Instantiate(enemys, sSpawn.transform.position, Quaternion.identity);
-        enemy.GetComponent<enemyScript>().setObjetivos(ob1, ob2, ob3, ob4, ob5, ovulo, ob3_2, ob3_3, ob4_2, ob4_3, ob5_2, ob5_3);
+        enemy.GetComponent<enemyScript>().setObjetivos(ob1, ob2, ob3, ob4, ob5, ovulo, ob1_2, ob1_3, ob2_2, ob2_3, ob3_2, ob3_3, ob4_2, ob4_3, ob5_2, ob5_3);
         enemys.SetActive(false);
     }
 
