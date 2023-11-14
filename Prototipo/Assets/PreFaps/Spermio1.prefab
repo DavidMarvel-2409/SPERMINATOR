@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 30
-  velocidadRotacion: 4
+  velocidadRotacion: 5
   Ovulo: {fileID: 0}
   Objetivo1: {fileID: 0}
   Objetivo2: {fileID: 0}
