@@ -9,6 +9,8 @@ public class movement : MonoBehaviour
     [SerializeField] float speed;
     public TextMeshProUGUI scoretext;
     public TextMeshProUGUI restantes;
+        
+    public float varVida;
 
     public int score;
     public float espera;
@@ -28,6 +30,7 @@ public class movement : MonoBehaviour
     {
         score = 0;
         rest = 10;
+        varVida = 100;
     }
 
     // Update is called once per frame

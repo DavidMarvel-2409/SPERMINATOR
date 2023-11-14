@@ -5,6 +5,7 @@ using UnityEngine;
 public class Controlador_general : MonoBehaviour
 {
     public GameObject Spawner;
+    public GameObject Inicio_oleada;
     public GameObject Player1;
     public GameObject Ovulo;
 
@@ -17,6 +18,8 @@ public class Controlador_general : MonoBehaviour
         if (Vector3.Distance(Player1.transform.position, Ovulo.transform.position) < 120)
         {
             Spawner.GetComponent<creadorEnemigos>().comienza = true;
+            Inicio_oleada.SetActive(true);
+            Inicio_oleada.GetComponent<Barra_Oleada>().IniciaOleada = true;
         }
     }
 }

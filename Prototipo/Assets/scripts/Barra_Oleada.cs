@@ -9,15 +9,20 @@ public class Barra_Oleada : MonoBehaviour
     public float tiempo;
     public float tiempoTotal;
     public Image oleada;
+    public bool IniciaOleada;
 
     void Start()
     {
-
+        IniciaOleada = false;
     }
 
     void Update()
     {
-        tiempo -= 0.001f;
-        oleada.fillAmount = tiempo / tiempoTotal;
+        if (IniciaOleada)
+        {
+            tiempo -= 0.001f;
+            oleada.fillAmount = tiempo / tiempoTotal;
+        }
+        
     }
 }

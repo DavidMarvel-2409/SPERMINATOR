@@ -15,8 +15,14 @@ public class enemyScript : MonoBehaviour
     public GameObject Objetivo1;
     public GameObject Objetivo2;
     public GameObject Objetivo3;
+    public GameObject Objetivo3_2;
+    public GameObject Objetivo3_3;
     public GameObject Objetivo4;
+    public GameObject Objetivo4_2;
+    public GameObject Objetivo4_3;
     public GameObject Objetivo5;
+    public GameObject Objetivo5_2;
+    public GameObject Objetivo5_3;
 
     private GameObject Objetivo_Auxiliar;
 
@@ -30,13 +36,20 @@ public class enemyScript : MonoBehaviour
         //Debug.Log(Ovulo.transform);
         
     }
-    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov)
+    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov, GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2, GameObject a5_3)
     {
         Objetivo1 = a1;
         Objetivo2 = a2;
         Objetivo3 = a3;
         Objetivo4 = a4;
         Objetivo5 = a5;
+
+        Objetivo3_2 = a3_2;
+        Objetivo3_3 = a3_3;
+        Objetivo4_2 = a4_2;
+        Objetivo4_3 = a4_3;
+        Objetivo5_2 = a5_2;
+        Objetivo5_3 = a5_3;
 
         Objetivo_Auxiliar = a1;
 
@@ -85,17 +98,52 @@ public class enemyScript : MonoBehaviour
         }
         else if (_Actual == Objetivo2)
         {
-            Objetivo_Auxiliar = Objetivo3;
+            int op = select_op();
+            Debug.Log(op);
+            switch (select_op())
+            {
+                case 0:
+                    Objetivo_Auxiliar = Objetivo3;
+                    break;
+                case 1:
+                    Objetivo_Auxiliar = Objetivo3_2;
+                    break;
+                case 2:
+                    Objetivo_Auxiliar = Objetivo3_3;
+                    break;
+            }
         }
-        else if (_Actual == Objetivo3)
+        else if (_Actual == Objetivo3 || _Actual == Objetivo3_2 || _Actual == Objetivo3_3)
         {
-            Objetivo_Auxiliar = Objetivo4;
+            switch (select_op())
+            {
+                case 0:
+                    Objetivo_Auxiliar = Objetivo4;
+                    break;
+                case 1:
+                    Objetivo_Auxiliar = Objetivo4_2;
+                    break;
+                case 2:
+                    Objetivo_Auxiliar = Objetivo4_3;
+                    break;
+            }
         }
-        else if (_Actual == Objetivo4)
+        else if (_Actual == Objetivo4 || _Actual == Objetivo4_2 || _Actual == Objetivo4_3)
         {
-            Objetivo_Auxiliar = Objetivo5;
+            switch (select_op())
+            {
+                case 0:
+                    Objetivo_Auxiliar = Objetivo5;
+                    break;
+                case 1:
+                    Objetivo_Auxiliar = Objetivo5_2;
+                    break;
+                case 2:
+                    Objetivo_Auxiliar = Objetivo5_3;
+                    break;
+            }
         }
-        else if (_Actual == Objetivo5)
+        else if (_Actual == Objetivo5 || _Actual == Objetivo5_2 || _Actual == Objetivo5_3)
         {
             Objetivo_Auxiliar = Ovulo;
         }
@@ -114,6 +162,12 @@ public class enemyScript : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private int select_op()
+    {
+        int op = Random.Range(0, 3);
+        return op;
     }
 }
 

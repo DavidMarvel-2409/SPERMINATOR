@@ -100,14 +100,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4f907fd62fb454c9a5a11a6be8a80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
+  moveSpeed: 20
   velocidadRotacion: 4
   Ovulo: {fileID: 0}
   Objetivo1: {fileID: 0}
   Objetivo2: {fileID: 0}
   Objetivo3: {fileID: 0}
+  Objetivo3_2: {fileID: 0}
+  Objetivo3_3: {fileID: 0}
   Objetivo4: {fileID: 0}
+  Objetivo4_2: {fileID: 0}
+  Objetivo4_3: {fileID: 0}
   Objetivo5: {fileID: 0}
+  Objetivo5_2: {fileID: 0}
+  Objetivo5_3: {fileID: 0}
 --- !u!61 &929415861303179921
 BoxCollider2D:
   m_ObjectHideFlags: 0
