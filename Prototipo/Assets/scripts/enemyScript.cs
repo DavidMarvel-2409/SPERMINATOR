@@ -33,12 +33,6 @@ public class enemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log(Objetivo1.transform);
-        //Debug.Log(Objetivo2.transform);
-        //Debug.Log(Objetivo3.transform);
-        //Debug.Log(Objetivo4.transform);
-        //Debug.Log(Ovulo.transform);
-        
     }
     public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3, GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2, GameObject a5_3)
     {
@@ -46,7 +40,7 @@ public class enemyScript : MonoBehaviour
         Objetivo1_2 = a1_2;
         Objetivo1_3 = a1_3;
         Objetivo2 = a2;
-        Objetivo2_3 = a2_2;
+        Objetivo2_2 = a2_2;
         Objetivo2_3 = a2_3;
         Objetivo3 = a3;
         Objetivo3_2 = a3_2;
