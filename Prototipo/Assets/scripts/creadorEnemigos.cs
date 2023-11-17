@@ -9,39 +9,30 @@ public class creadorEnemigos : MonoBehaviour
     public float creationRangeY;
     public float creationRangeX;
     public GameObject ovulo;
-    private Vector3 coor_ovulo;
     public int radio;
     public int maxAttempts = 100; // Número máximo de intentos
 
-    public GameObject ob1;
-    public GameObject ob1_2;
-    public GameObject ob1_3;
-    public GameObject ob2;
-    public GameObject ob2_2;
-    public GameObject ob2_3;
-    public GameObject ob3;
-    public GameObject ob3_2;
-    public GameObject ob3_3;
-    public GameObject ob4;
-    public GameObject ob4_2;
-    public GameObject ob4_3;
-    public GameObject ob5;
-    public GameObject ob5_2;
-    public GameObject ob5_3;
+    public GameObject[] Objetinos_1;
+    public GameObject[] Objetinos_2;
+    public GameObject[] Objetinos_3;
+    public GameObject[] Objetinos_4;
+    public GameObject[] Objetinos_5;
 
     public bool comienza;
 
-    public GameObject Spawn1;
-    public GameObject Spawn2;
-    public GameObject Spawn3;
+    public GameObject[] Spawns;
 
     private float spawn_espera;
+
+    public GameObject[] drops;
+    public string[] Nombre_drop;
+    private int total_drops;
 
     // Start is called before the first frame update
     void Start()
     {
         comienza = false;
-
+        total_drops = drops.Length;
         spawn_espera = 0;
     }
 
@@ -57,13 +48,13 @@ public class creadorEnemigos : MonoBehaviour
                 switch (selec_spawn())
                 {
                     case 0:
-                        CreateEnemies(Spawn1);
+                        CreateEnemies(Spawns[0]);
                     break;
                     case 1:
-                        CreateEnemies(Spawn2);
+                        CreateEnemies(Spawns[1]);
                     break;
                     case 2:
-                        CreateEnemies(Spawn3);
+                        CreateEnemies(Spawns[2]);
                     break;
                 }
             }
@@ -76,8 +67,18 @@ public class creadorEnemigos : MonoBehaviour
 
         enemys.SetActive(true);
         GameObject enemy = Instantiate(enemys, sSpawn.transform.position, Quaternion.identity);
-        enemy.GetComponent<enemyScript>().setObjetivos(ob1, ob2, ob3, ob4, ob5, ovulo, ob1_2, ob1_3, ob2_2, ob2_3, ob3_2, ob3_3, ob4_2, ob4_3, ob5_2, ob5_3);
+        int i = select_drop();
+        enemy.GetComponent<enemyScript>().setObjetivos(Objetinos_1[0], Objetinos_2[0], Objetinos_3[0], Objetinos_4[0], Objetinos_5[0], ovulo,
+                                                        Objetinos_1[1], Objetinos_1[2], Objetinos_2[1], Objetinos_2[2],
+                                                        Objetinos_3[1], Objetinos_3[2], Objetinos_4[1], Objetinos_4[2],
+                                                        Objetinos_5[1], Objetinos_5[2], drops[i], Nombre_drop[i]);
         enemys.SetActive(false);
+    }
+
+    private int select_drop()
+    {
+        int i = Random.Range(0, total_drops);
+        return i;
     }
 
     private int selec_spawn()

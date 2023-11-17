@@ -11,56 +11,59 @@ public class enemyScript : MonoBehaviour
     public float velocidadRotacion;
 
     public GameObject Ovulo;
-    
-    public GameObject Objetivo1;
-    public GameObject Objetivo1_2;
-    public GameObject Objetivo1_3;
-    public GameObject Objetivo2;
-    public GameObject Objetivo2_2;
-    public GameObject Objetivo2_3;
-    public GameObject Objetivo3;
-    public GameObject Objetivo3_2;
-    public GameObject Objetivo3_3;
-    public GameObject Objetivo4;
-    public GameObject Objetivo4_2;
-    public GameObject Objetivo4_3;
-    public GameObject Objetivo5;
-    public GameObject Objetivo5_2;
-    public GameObject Objetivo5_3;
 
+    public GameObject[] Objetivos_1;
+    public GameObject[] Objetivos_2;
+    public GameObject[] Objetivos_3;
+    public GameObject[] Objetivos_4;
+    public GameObject[] Objetivos_5;
     private GameObject Objetivo_Auxiliar;
+
+    public GameObject drop;
+    public string nombre_drop;
 
     // Start is called before the first frame update
     void Start()
     {
     }
-    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3, GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2, GameObject a5_3)
+    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, 
+                            GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3,
+                            GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2,
+                            GameObject a5_3, GameObject drop, string name_drop)
     {
-        Objetivo1 = a1;
-        Objetivo1_2 = a1_2;
-        Objetivo1_3 = a1_3;
-        Objetivo2 = a2;
-        Objetivo2_2 = a2_2;
-        Objetivo2_3 = a2_3;
-        Objetivo3 = a3;
-        Objetivo3_2 = a3_2;
-        Objetivo3_3 = a3_3;
-        Objetivo4 = a4;
-        Objetivo4_2 = a4_2;
-        Objetivo4_3 = a4_3;
-        Objetivo5 = a5;
-        Objetivo5_2 = a5_2;
-        Objetivo5_3 = a5_3;
+        Objetivos_1[0] = a1;
+        Objetivos_1[1] = a1_2;
+        Objetivos_1[2] = a1_3;
+
+        Objetivos_2[0] = a2;
+        Objetivos_2[1] = a2_2;
+        Objetivos_2[2] = a2_3;
+
+        Objetivos_3[0] = a3;
+        Objetivos_3[1] = a3_2;
+        Objetivos_3[2] = a3_3;
+
+        Objetivos_4[0] = a4;
+        Objetivos_4[1] = a4_2;
+        Objetivos_4[2] = a4_3;
+
+        Objetivos_5[0] = a5;
+        Objetivos_5[1] = a5_2;
+        Objetivos_5[2] = a5_3;
+
+        this.drop = drop;
+        nombre_drop = name_drop;
+
         switch (select_op())
         {
             case 0:
-                Objetivo_Auxiliar = a1;
+                Objetivo_Auxiliar = Objetivos_1[0];
                 break;
             case 1:
-                Objetivo_Auxiliar = a1_2;
+                Objetivo_Auxiliar = Objetivos_1[1];
                 break;
             case 2:
-                Objetivo_Auxiliar = a1_3;
+                Objetivo_Auxiliar = Objetivos_1[2];
                 break;
         }
         Ovulo = ov;
@@ -85,7 +88,6 @@ public class enemyScript : MonoBehaviour
         return dist;
     }
 
-
     private void Movimiento(GameObject Objetivo_)
     {
         //transform.position = Vector3.MoveTowards(transform.position, Objetivo_.transform.position, moveSpeed * Time.deltaTime);
@@ -102,67 +104,67 @@ public class enemyScript : MonoBehaviour
 
     private void Cambio_de_objetivo(GameObject _Actual)
     {
-        if (_Actual == Objetivo1 || _Actual == Objetivo1_2 || _Actual == Objetivo1_3)
+        if (_Actual == Objetivos_1[0] || _Actual == Objetivos_1[1] || _Actual == Objetivos_1[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivo2;
+                    Objetivo_Auxiliar = Objetivos_2[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivo2_2;
+                    Objetivo_Auxiliar = Objetivos_2[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivo2_3;
+                    Objetivo_Auxiliar = Objetivos_2[2];
                     break;
             }
         }
-        else if (_Actual == Objetivo2)
+        else if (_Actual == Objetivos_2[0] || _Actual == Objetivos_2[1] || _Actual == Objetivos_2[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivo3;
+                    Objetivo_Auxiliar = Objetivos_3[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivo3_2;
+                    Objetivo_Auxiliar = Objetivos_3[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivo3_3;
+                    Objetivo_Auxiliar = Objetivos_3[2];
                     break;
             }
         }
-        else if (_Actual == Objetivo3 || _Actual == Objetivo3_2 || _Actual == Objetivo3_3)
+        else if (_Actual == Objetivos_3[0] || _Actual == Objetivos_3[1] || _Actual == Objetivos_3[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivo4;
+                    Objetivo_Auxiliar = Objetivos_4[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivo4_2;
+                    Objetivo_Auxiliar = Objetivos_4[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivo4_3;
+                    Objetivo_Auxiliar = Objetivos_4[2];
                     break;
             }
         }
-        else if (_Actual == Objetivo4 || _Actual == Objetivo4_2 || _Actual == Objetivo4_3)
+        else if (_Actual == Objetivos_4[0] || _Actual == Objetivos_4[1] || _Actual == Objetivos_4[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivo5;
+                    Objetivo_Auxiliar = Objetivos_5[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivo5_2;
+                    Objetivo_Auxiliar = Objetivos_5[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivo5_3;
+                    Objetivo_Auxiliar = Objetivos_5[2];
                     break;
             }
         }
-        else if (_Actual == Objetivo5 || _Actual == Objetivo5_2 || _Actual == Objetivo5_3)
+        else if (_Actual == Objetivos_5[0] || _Actual == Objetivos_5[1] || _Actual == Objetivos_5[2])
         {
             Objetivo_Auxiliar = Ovulo;
         }
