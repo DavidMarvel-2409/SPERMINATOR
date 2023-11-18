@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6758970667977372700
 Transform:
   m_ObjectHideFlags: 0
@@ -103,11 +103,26 @@ MonoBehaviour:
   moveSpeed: 20
   velocidadRotacion: 4
   Ovulo: {fileID: 0}
-  Objetivos_1: []
-  Objetivos_2: []
-  Objetivos_3: []
-  Objetivos_4: []
-  Objetivos_5: []
+  Objetivos_1:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Objetivos_2:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Objetivos_3:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Objetivos_4:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Objetivos_5:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   drop: {fileID: 0}
   nombre_drop: 
 --- !u!61 &929415861303179921
