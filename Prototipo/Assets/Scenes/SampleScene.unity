@@ -3320,6 +3320,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spermio1
       objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372697, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: drop
+      value: 
+      objectReference: {fileID: 1131746927}
     - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
       propertyPath: Ovulo
       value: 
@@ -3370,6 +3378,90 @@ PrefabInstance:
       objectReference: {fileID: 1145731849}
     - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
       propertyPath: Objetivo5_3
+      value: 
+      objectReference: {fileID: 301213001}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: nombre_drop
+      value: vida
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_1.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_2.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_3.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_4.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_5.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_1.Array.data[0]
+      value: 
+      objectReference: {fileID: 942984803}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_1.Array.data[1]
+      value: 
+      objectReference: {fileID: 2029000345}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_1.Array.data[2]
+      value: 
+      objectReference: {fileID: 1754614582}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_2.Array.data[0]
+      value: 
+      objectReference: {fileID: 292337330}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_2.Array.data[1]
+      value: 
+      objectReference: {fileID: 643566707}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_2.Array.data[2]
+      value: 
+      objectReference: {fileID: 2090856697}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_3.Array.data[0]
+      value: 
+      objectReference: {fileID: 68612582}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_3.Array.data[1]
+      value: 
+      objectReference: {fileID: 693811916}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_3.Array.data[2]
+      value: 
+      objectReference: {fileID: 422845635}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_4.Array.data[0]
+      value: 
+      objectReference: {fileID: 985276572}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_4.Array.data[1]
+      value: 
+      objectReference: {fileID: 1426276948}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_4.Array.data[2]
+      value: 
+      objectReference: {fileID: 1046420541}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_5.Array.data[0]
+      value: 
+      objectReference: {fileID: 931940956}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_5.Array.data[1]
+      value: 
+      objectReference: {fileID: 1145731849}
+    - target: {fileID: 6758970667977372698, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
+      propertyPath: Objetivos_5.Array.data[2]
       value: 
       objectReference: {fileID: 301213001}
     - target: {fileID: 6758970667977372700, guid: 7783309a381ae3140b1dc1a235466aba, type: 3}
