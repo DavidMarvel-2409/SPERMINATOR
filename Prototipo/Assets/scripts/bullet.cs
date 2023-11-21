@@ -44,6 +44,7 @@ public class bullet : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
+            npc.gameObject.GetComponent<enemyScript>().Droping();
             Destroy(npc.gameObject); // Elimina el enemigo
             Destroy(gameObject); // Elimina la bala
 

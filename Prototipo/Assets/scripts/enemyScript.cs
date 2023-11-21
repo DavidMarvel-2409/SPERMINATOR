@@ -19,6 +19,8 @@ public class enemyScript : MonoBehaviour
     public GameObject[] Objetivos_5;
     private GameObject Objetivo_Auxiliar;
 
+    public GameObject cola;
+
     public GameObject drop;
     public string nombre_drop;
 
@@ -29,7 +31,7 @@ public class enemyScript : MonoBehaviour
     public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, 
                             GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3,
                             GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2,
-                            GameObject a5_3, GameObject drop, string name_drop)
+                            GameObject a5_3, GameObject drop, string name_drop, GameObject cola)
     {
         Objetivos_1[0] = a1;
         Objetivos_1[1] = a1_2;
@@ -53,6 +55,8 @@ public class enemyScript : MonoBehaviour
 
         this.drop = drop;
         nombre_drop = name_drop;
+
+        this.cola = cola;
 
         switch (select_op())
         {
@@ -78,6 +82,9 @@ public class enemyScript : MonoBehaviour
         {
             Cambio_de_objetivo(Objetivo_Auxiliar);
         }
+
+        cola.transform.position = transform.position;
+        cola.transform.rotation = transform.rotation;
 
     }
 
@@ -189,6 +196,12 @@ public class enemyScript : MonoBehaviour
     {
         int op = Random.Range(0, 3);
         return op;
+    }
+
+    public void Droping()
+    {
+        GameObject Drop_clon = Instantiate(drop, transform.position, Quaternion.identity);
+
     }
 }
 

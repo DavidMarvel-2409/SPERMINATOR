@@ -102,6 +102,7 @@ public class movement : MonoBehaviour
             Destroy(npc.gameObject);
             score++;
             rest--;
+            varVida -= 10;
         }
     }
 }

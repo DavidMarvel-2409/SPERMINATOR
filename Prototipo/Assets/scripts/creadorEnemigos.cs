@@ -5,6 +5,7 @@ using UnityEngine;
 public class creadorEnemigos : MonoBehaviour
 {
     public GameObject enemys;
+    public GameObject cola;
     public float creationTime;
     public float creationRangeY;
     public float creationRangeX;
@@ -67,11 +68,12 @@ public class creadorEnemigos : MonoBehaviour
 
         enemys.SetActive(true);
         GameObject enemy = Instantiate(enemys, sSpawn.transform.position, Quaternion.identity);
+        GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
         int i = select_drop();
         enemy.GetComponent<enemyScript>().setObjetivos(Objetinos_1[0], Objetinos_2[0], Objetinos_3[0], Objetinos_4[0], Objetinos_5[0], ovulo,
                                                         Objetinos_1[1], Objetinos_1[2], Objetinos_2[1], Objetinos_2[2],
                                                         Objetinos_3[1], Objetinos_3[2], Objetinos_4[1], Objetinos_4[2],
-                                                        Objetinos_5[1], Objetinos_5[2], drops[i], Nombre_drop[i]);
+                                                        Objetinos_5[1], Objetinos_5[2], drops[i], Nombre_drop[i], _cola);
         enemys.SetActive(false);
     }
 
