@@ -200,28 +200,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   velocidadRotacion: 4
+  Name_meco: 
   Ovulo: {fileID: 0}
-  Objetivos_1:
+  Objetivos_1_:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Objetivos_2:
+  Objetivos_2_:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Objetivos_3:
+  Objetivos_3_:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Objetivos_4:
+  Objetivos_4_:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Objetivos_5:
+  Objetivos_5_:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  cola: {fileID: 1333157741298115641, guid: d05c537cf8f32944491f385ae739c2ff, type: 3}
+  Objetivo_Auxiliar: {fileID: 0}
+  cola: {fileID: 0}
   drop: {fileID: 0}
   nombre_drop: vida
 --- !u!61 &3741999712203248227

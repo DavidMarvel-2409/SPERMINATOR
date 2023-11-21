@@ -89,6 +89,7 @@ public class movement : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
+            npc.GetComponent<enemyScript>().eliminar_cola();
             Destroy(npc.gameObject);
             score++;
             rest--;

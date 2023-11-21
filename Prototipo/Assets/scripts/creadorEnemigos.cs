@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class creadorEnemigos : MonoBehaviour
 {
-    public GameObject enemys;
+    public GameObject[] enemys;
     public GameObject cola;
+    public GameObject[] clon;
     public float creationTime;
     public float creationRangeY;
     public float creationRangeX;
@@ -13,11 +14,11 @@ public class creadorEnemigos : MonoBehaviour
     public int radio;
     public int maxAttempts = 100; // Número máximo de intentos
 
-    public GameObject[] Objetinos_1;
-    public GameObject[] Objetinos_2;
-    public GameObject[] Objetinos_3;
-    public GameObject[] Objetinos_4;
-    public GameObject[] Objetinos_5;
+    public GameObject[] Objetivos_1;
+    public GameObject[] Objetivos_2;
+    public GameObject[] Objetivos_3;
+    public GameObject[] Objetivos_4;
+    public GameObject[] Objetivos_5;
 
     public bool comienza;
 
@@ -28,6 +29,9 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject[] drops;
     public string[] Nombre_drop;
     private int total_drops;
+
+    public int nivel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -66,15 +70,31 @@ public class creadorEnemigos : MonoBehaviour
     public void CreateEnemies(GameObject sSpawn)
     {
 
-        enemys.SetActive(true);
-        GameObject enemy = Instantiate(enemys, sSpawn.transform.position, Quaternion.identity);
+        enemys[0].SetActive(true);
+        GameObject enemy = Instantiate(enemys[0], sSpawn.transform.position, Quaternion.identity);
         GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
+        GameObject clon_ = Instantiate(clon[0], new Vector3(sSpawn.transform.position.x,
+                                                            sSpawn.transform.position.y, 0), Quaternion.identity);
+
+        enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
+        enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
+        enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
+        enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
+        enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
+
+        enemy.GetComponent<enemyScript>().Ovulo = ovulo;
+
         int i = select_drop();
-        enemy.GetComponent<enemyScript>().setObjetivos(Objetinos_1[0], Objetinos_2[0], Objetinos_3[0], Objetinos_4[0], Objetinos_5[0], ovulo,
-                                                        Objetinos_1[1], Objetinos_1[2], Objetinos_2[1], Objetinos_2[2],
-                                                        Objetinos_3[1], Objetinos_3[2], Objetinos_4[1], Objetinos_4[2],
-                                                        Objetinos_5[1], Objetinos_5[2], drops[i], Nombre_drop[i], _cola);
-        enemys.SetActive(false);
+        enemy.GetComponent<enemyScript>().drop = drops[i];
+        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
+        _cola.GetComponent<Script_Cola>().cabeza = enemy;
+
+        int op = Select_Objetive();
+        enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
+
+        clon_.GetComponent<Clon_Meco>().meco = enemy;
+
+        enemys[0].SetActive(false);
     }
 
     private int select_drop()
@@ -87,6 +107,11 @@ public class creadorEnemigos : MonoBehaviour
     {
         int op = Random.Range(0, 3);
         return op;
+    }
+
+    private int Select_Objetive()
+    {
+        return Random.Range(0, 3);
     }
 
 }

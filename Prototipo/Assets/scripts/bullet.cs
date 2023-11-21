@@ -33,6 +33,7 @@ public class bullet : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
+            npc.GetComponent<enemyScript>().eliminar_cola();
             Destroy(npc.gameObject); // Elimina el enemigo
             Destroy(gameObject); // Elimina la bala
 

@@ -10,69 +10,30 @@ public class enemyScript : MonoBehaviour
     float angulo;
     public float velocidadRotacion;
 
+    public string Name_meco;
+    //esto es para ver las especificaciones del espermatosoide
+    //Bob es el base
+    //Dash es el rapido
+    //Rex es el fuerte
+
     public GameObject Ovulo;
 
-    public GameObject[] Objetivos_1;
-    public GameObject[] Objetivos_2;
-    public GameObject[] Objetivos_3;
-    public GameObject[] Objetivos_4;
-    public GameObject[] Objetivos_5;
-    private GameObject Objetivo_Auxiliar;
+    public GameObject[] Objetivos_1_;
+    public GameObject[] Objetivos_2_;
+    public GameObject[] Objetivos_3_;
+    public GameObject[] Objetivos_4_;
+    public GameObject[] Objetivos_5_;
+    public GameObject Objetivo_Auxiliar;
 
-    public GameObject cola;
+    public GameObject _cola_;
 
     public GameObject drop;
     public string nombre_drop;
 
-    // Start is called before the first frame update
     void Start()
     {
     }
-    public void setObjetivos(GameObject a1, GameObject a2, GameObject a3, GameObject a4, GameObject a5, 
-                            GameObject ov, GameObject a1_2, GameObject a1_3, GameObject a2_2, GameObject a2_3,
-                            GameObject a3_2, GameObject a3_3, GameObject a4_2, GameObject a4_3, GameObject a5_2,
-                            GameObject a5_3, GameObject drop, string name_drop, GameObject cola)
-    {
-        Objetivos_1[0] = a1;
-        Objetivos_1[1] = a1_2;
-        Objetivos_1[2] = a1_3;
 
-        Objetivos_2[0] = a2;
-        Objetivos_2[1] = a2_2;
-        Objetivos_2[2] = a2_3;
-
-        Objetivos_3[0] = a3;
-        Objetivos_3[1] = a3_2;
-        Objetivos_3[2] = a3_3;
-
-        Objetivos_4[0] = a4;
-        Objetivos_4[1] = a4_2;
-        Objetivos_4[2] = a4_3;
-
-        Objetivos_5[0] = a5;
-        Objetivos_5[1] = a5_2;
-        Objetivos_5[2] = a5_3;
-
-        this.drop = drop;
-        nombre_drop = name_drop;
-
-        this.cola = cola;
-
-        switch (select_op())
-        {
-            case 0:
-                Objetivo_Auxiliar = Objetivos_1[0];
-                break;
-            case 1:
-                Objetivo_Auxiliar = Objetivos_1[1];
-                break;
-            case 2:
-                Objetivo_Auxiliar = Objetivos_1[2];
-                break;
-        }
-        Ovulo = ov;
-    }
-    // Update is called once per frame
     void Update()
     {
         Movimiento(Objetivo_Auxiliar);
@@ -82,9 +43,6 @@ public class enemyScript : MonoBehaviour
         {
             Cambio_de_objetivo(Objetivo_Auxiliar);
         }
-
-        cola.transform.position = transform.position;
-        cola.transform.rotation = transform.rotation;
 
     }
 
@@ -98,7 +56,18 @@ public class enemyScript : MonoBehaviour
     private void Movimiento(GameObject Objetivo_)
     {
         //transform.position = Vector3.MoveTowards(transform.position, Objetivo_.transform.position, moveSpeed * Time.deltaTime);
-        transform.position += (Objetivo_.transform.position- transform.position).normalized* moveSpeed * Time.deltaTime;
+        if (Name_meco == "Bob")
+        {
+            transform.position += (Objetivo_.transform.position - transform.position).normalized * moveSpeed * Time.deltaTime;
+        }
+        else if (Name_meco == "Dash")
+        {
+            transform.position += (Objetivo_.transform.position - transform.position).normalized * moveSpeed * 2 * Time.deltaTime;
+        }
+        else if (Name_meco == "Rex")
+        {
+            transform.position += (Objetivo_.transform.position - transform.position).normalized * moveSpeed * 0.7f * Time.deltaTime;
+        }
     }
 
     private void cambiar_angulo(GameObject Objetivo_)
@@ -111,67 +80,67 @@ public class enemyScript : MonoBehaviour
 
     private void Cambio_de_objetivo(GameObject _Actual)
     {
-        if (_Actual == Objetivos_1[0] || _Actual == Objetivos_1[1] || _Actual == Objetivos_1[2])
+        if (_Actual == Objetivos_1_[0] || _Actual == Objetivos_1_[1] || _Actual == Objetivos_1_[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivos_2[0];
+                    Objetivo_Auxiliar = Objetivos_2_[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivos_2[1];
+                    Objetivo_Auxiliar = Objetivos_2_[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivos_2[2];
+                    Objetivo_Auxiliar = Objetivos_2_[2];
                     break;
             }
         }
-        else if (_Actual == Objetivos_2[0] || _Actual == Objetivos_2[1] || _Actual == Objetivos_2[2])
+        else if (_Actual == Objetivos_2_[0] || _Actual == Objetivos_2_[1] || _Actual == Objetivos_2_[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivos_3[0];
+                    Objetivo_Auxiliar = Objetivos_3_[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivos_3[1];
+                    Objetivo_Auxiliar = Objetivos_3_[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivos_3[2];
+                    Objetivo_Auxiliar = Objetivos_3_[2];
                     break;
             }
         }
-        else if (_Actual == Objetivos_3[0] || _Actual == Objetivos_3[1] || _Actual == Objetivos_3[2])
+        else if (_Actual == Objetivos_3_[0] || _Actual == Objetivos_3_[1] || _Actual == Objetivos_3_[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivos_4[0];
+                    Objetivo_Auxiliar = Objetivos_4_[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivos_4[1];
+                    Objetivo_Auxiliar = Objetivos_4_[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivos_4[2];
+                    Objetivo_Auxiliar = Objetivos_4_[2];
                     break;
             }
         }
-        else if (_Actual == Objetivos_4[0] || _Actual == Objetivos_4[1] || _Actual == Objetivos_4[2])
+        else if (_Actual == Objetivos_4_[0] || _Actual == Objetivos_4_[1] || _Actual == Objetivos_4_[2])
         {
             switch (select_op())
             {
                 case 0:
-                    Objetivo_Auxiliar = Objetivos_5[0];
+                    Objetivo_Auxiliar = Objetivos_5_[0];
                     break;
                 case 1:
-                    Objetivo_Auxiliar = Objetivos_5[1];
+                    Objetivo_Auxiliar = Objetivos_5_[1];
                     break;
                 case 2:
-                    Objetivo_Auxiliar = Objetivos_5[2];
+                    Objetivo_Auxiliar = Objetivos_5_[2];
                     break;
             }
         }
-        else if (_Actual == Objetivos_5[0] || _Actual == Objetivos_5[1] || _Actual == Objetivos_5[2])
+        else if (_Actual == Objetivos_5_[0] || _Actual == Objetivos_5_[1] || _Actual == Objetivos_5_[2])
         {
             Objetivo_Auxiliar = Ovulo;
         }
@@ -182,6 +151,7 @@ public class enemyScript : MonoBehaviour
         if (uterocolision.collider.CompareTag("UterPoint"))
         {
             Destroy(this.gameObject);
+            eliminar_cola();
         }
     }
     private void OnTriggerEnter2D(Collider2D uterocolisiondos)
@@ -189,6 +159,7 @@ public class enemyScript : MonoBehaviour
         if (uterocolisiondos.CompareTag("UterPoint"))
         {
             Destroy(this.gameObject);
+            eliminar_cola();
         }
     }
 
@@ -201,7 +172,11 @@ public class enemyScript : MonoBehaviour
     public void Droping()
     {
         GameObject Drop_clon = Instantiate(drop, transform.position, Quaternion.identity);
-
+        //eliminar_cola();
+    }
+    public void eliminar_cola()
+    {
+        _cola_.GetComponent<Script_Cola>().eliminar_cola();
     }
 }
 
