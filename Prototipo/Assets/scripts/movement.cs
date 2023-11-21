@@ -14,6 +14,7 @@ public class movement : MonoBehaviour
 
     public int score;
     public float espera;
+    public AudioSource Sonido_Disparo;
 
     public int rest;
     float horizontalM;
@@ -31,6 +32,7 @@ public class movement : MonoBehaviour
         score = 0;
         rest = 10;
         varVida = 100;
+        Sonido_Disparo=GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -79,6 +81,7 @@ public class movement : MonoBehaviour
             
             // Reiniciar el temporizador de disparo
             shootCooldown = Time.time + espera; // Ajusta el valor según la velocidad de disparo deseada
+            Sonido_Disparo.Play();
         }
     }
 
