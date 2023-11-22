@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class uterScript : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class uterScript : MonoBehaviour
     //public float angle;                         //es un auxiliar
     private float escala;                       //la escala en la que está el ovulo
     private float escala_2;                     //cuanto se le suma a la escala
+
+    public float vidaUter;
 
     private void Start()
     {
@@ -34,6 +38,11 @@ public class uterScript : MonoBehaviour
         //angle = rota;
         transform.rotation = Quaternion.Euler(0, 0, rota);  //actualiza el transform de la rotacion
         transform.localScale = new Vector3(1, escala, 1);   //actualiza el transform de la escala
+
+        if (vidaUter <= 0)
+        {
+            vidaUter = 0;
+        }
     }
     private void rotar()
     {
@@ -70,10 +79,18 @@ public class uterScript : MonoBehaviour
         //Debug.Log("olha");
         escala_2 = 1;
         Invoke("parar_revote", 1.2f);           //llama a la funcion que frena el revote
+
+
+        if (collision.gameObject.CompareTag("enemigo"))
+        {
+            vidaUter -= 10;
+        }
+
     }
     private void parar_revote()                 //deja en 0 el revote
     {
         escala_2 = 0;
         escala = 1;
     }
+
 }

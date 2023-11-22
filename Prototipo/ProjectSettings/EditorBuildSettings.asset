@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/finalscene.unity
     guid: e3726a6fc0e04f24aad50151da82d9e1
+  - enabled: 1
+    path: Assets/Scenes/Perdida.unity
+    guid: 13b7752fd8d9a71479ec07eea31d0400
   m_configObjects: {}

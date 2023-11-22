@@ -7,12 +7,9 @@ using UnityEngine.SceneManagement;
 public class movement : MonoBehaviour
 {
     [SerializeField] float speed;
-    public TextMeshProUGUI scoretext;
-    public TextMeshProUGUI restantes;
         
     public float varVida;
 
-    public int score;
     public float espera;
     public AudioSource Sonido_Disparo;
 
@@ -29,8 +26,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        rest = 10;
+        
         varVida = 100;
         Sonido_Disparo=GetComponent<AudioSource>();
     }
@@ -58,13 +54,9 @@ public class movement : MonoBehaviour
             Shoot();
         }
 
-        scoretext.text = "Enemigos derrotados:" + score;
-        restantes.text = "Derrota esta candidad de enemigos:" + rest;
-
-        if (score == 10)
-        {
-            SceneManager.LoadScene("finalscene");
-        }
+        //scoretext.text = "Enemigos derrotados:" + score;
+        //restantes.text = "Derrota esta candidad de enemigos:" + rest;
+       
     }
 
     void Shoot()
@@ -91,8 +83,7 @@ public class movement : MonoBehaviour
         {
             npc.GetComponent<enemyScript>().eliminar_cola();
             Destroy(npc.gameObject);
-            score++;
-            rest--;
+            
         }
     }
 
@@ -100,9 +91,9 @@ public class movement : MonoBehaviour
     {
         if(npc.gameObject.CompareTag("enemigo"))
         {
+
             Destroy(npc.gameObject);
-            score++;
-            rest--;
+            //npc.collider.GetComponent<enemyScript>().eliminar_cola();
             varVida -= 10;
         }
     }

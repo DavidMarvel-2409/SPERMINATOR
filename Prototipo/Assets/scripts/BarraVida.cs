@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BarraVida : MonoBehaviour
 {
-    public float vidaTotal;
+    public float vidaTotalPlayer;
     public Image oleada;
     public GameObject jugador;
     private float estadoVida;
@@ -19,7 +19,7 @@ public class BarraVida : MonoBehaviour
     {
             estadoVida = jugador.GetComponent<movement>().varVida;
             
-            oleada.fillAmount = estadoVida / vidaTotal;
+            oleada.fillAmount = estadoVida / vidaTotalPlayer;
 
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - UterPoint
   - enemigo
   - Escenario
+  - barraOleadas
   layers:
   - Default
   - TransparentFX

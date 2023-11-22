@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Controlador_general : MonoBehaviour
 {
     public GameObject Spawner;
     public GameObject Inicio_oleada;
     public GameObject Player1;
     public GameObject Ovulo;
+    
 
     private void Start()
     {
@@ -21,5 +22,16 @@ public class Controlador_general : MonoBehaviour
             Inicio_oleada.SetActive(true);
             Inicio_oleada.GetComponent<Barra_Oleada>().IniciaOleada = true;
         }
+        
+        if ( Ovulo.GetComponent<uterScript>().vidaUter <= 0 || Player1.GetComponent<movement>().varVida == 0)
+        {
+            SceneManager.LoadScene("Perdida");
+        }
+
+        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 1)
+        {
+            SceneManager.LoadScene("finalscene");
+        }
+
     }
 }

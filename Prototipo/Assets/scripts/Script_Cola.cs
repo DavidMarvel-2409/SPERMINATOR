@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEngine;
-
+                                        //basicamente, mueve la cola.
 public class Script_Cola : MonoBehaviour
 {
     private float time;

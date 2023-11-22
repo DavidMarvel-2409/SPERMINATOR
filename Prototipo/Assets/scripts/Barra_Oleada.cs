@@ -11,9 +11,12 @@ public class Barra_Oleada : MonoBehaviour
     public Image oleada;
     public bool IniciaOleada;
 
+    public float oleadas;
+
     void Start()
     {
         IniciaOleada = false;
+        oleadas = 0;
     }
 
     void Update()
