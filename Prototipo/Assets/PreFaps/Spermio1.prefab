@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c6f739f9d0cd640a9ae2362688d4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cabeza: {fileID: 0}
 --- !u!1 &7868445426450687765
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3005977241994565337
 Transform:
   m_ObjectHideFlags: 0
@@ -223,9 +224,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Objetivo_Auxiliar: {fileID: 0}
-  cola: {fileID: 0}
+  _cola_: {fileID: 0}
   drop: {fileID: 0}
-  nombre_drop: vida
+  nombre_drop: Nada
 --- !u!61 &3741999712203248227
 BoxCollider2D:
   m_ObjectHideFlags: 0

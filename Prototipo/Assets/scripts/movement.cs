@@ -54,6 +54,10 @@ public class movement : MonoBehaviour
             Shoot();
         }
 
+        if (varVida > 100)
+        {
+            varVida = 100;
+        }
         //scoretext.text = "Enemigos derrotados:" + score;
         //restantes.text = "Derrota esta candidad de enemigos:" + rest;
        
@@ -85,6 +89,10 @@ public class movement : MonoBehaviour
             Destroy(npc.gameObject);
             
         }
+        if (npc.gameObject.CompareTag("vidapower"))
+        {
+            varVida += 20;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D npc)
@@ -96,5 +104,17 @@ public class movement : MonoBehaviour
             //npc.collider.GetComponent<enemyScript>().eliminar_cola();
             varVida -= 10;
         }
+        if (npc.gameObject.CompareTag("vidapower"))
+        {
+            varVida += 20;
+        }
+        /*if (npc.gameObject.CompareTag("shootpower"))
+        {
+            espera = 0.1f;
+        }
+        if (npc.gameObject.CompareTag("speedpower"))
+        {
+            speed += 50;
+        }*/
     }
 }

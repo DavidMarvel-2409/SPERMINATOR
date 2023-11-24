@@ -9,6 +9,10 @@ TagManager:
   - enemigo
   - Escenario
   - barraOleadas
+  - bala
+  - vidapower
+  - shootpower
+  - speedpower
   layers:
   - Default
   - TransparentFX

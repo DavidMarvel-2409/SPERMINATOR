@@ -28,7 +28,7 @@ public class Controlador_general : MonoBehaviour
             SceneManager.LoadScene("Perdida");
         }
 
-        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 1)
+        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1)
         {
             SceneManager.LoadScene("finalscene");
         }

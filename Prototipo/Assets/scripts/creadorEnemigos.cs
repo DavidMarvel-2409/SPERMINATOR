@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class creadorEnemigos : MonoBehaviour
 {
@@ -13,12 +15,16 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject ovulo;
     public int radio;
     public int maxAttempts = 100; // Número máximo de intentos
+    private int contador_de_espermios;
+    private int contadorEnemigosGeneral;
 
     public GameObject[] Objetivos_1;
     public GameObject[] Objetivos_2;
     public GameObject[] Objetivos_3;
     public GameObject[] Objetivos_4;
     public GameObject[] Objetivos_5;
+
+    public TextMeshProUGUI texto;
 
     public bool comienza;
 
@@ -39,6 +45,8 @@ public class creadorEnemigos : MonoBehaviour
         comienza = false;
         total_drops = drops.Length;
         spawn_espera = 0;
+        contador_de_espermios = 0;
+        contadorEnemigosGeneral = 0;
     }
 
     // Update is called once per frame
@@ -72,6 +80,11 @@ public class creadorEnemigos : MonoBehaviour
 
         enemys[0].SetActive(true);
         GameObject enemy = Instantiate(enemys[0], sSpawn.transform.position, Quaternion.identity);
+        contador_de_espermios += 1;
+        contadorEnemigosGeneral += 1;
+        texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+
+
         GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
         GameObject clon_ = Instantiate(clon[0], new Vector3(sSpawn.transform.position.x,
                                                             sSpawn.transform.position.y, 0), Quaternion.identity);
@@ -84,8 +97,18 @@ public class creadorEnemigos : MonoBehaviour
 
         enemy.GetComponent<enemyScript>().Ovulo = ovulo;
 
-        int i = select_drop();
-        enemy.GetComponent<enemyScript>().drop = drops[i];
+        if (contador_de_espermios == 15)
+        {
+            contador_de_espermios = 0;
+            int i = select_drop();
+            enemy.GetComponent<enemyScript>().drop = drops[i];
+            enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
+        }
+        else
+        {
+            enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
+        }
+
         enemy.GetComponent<enemyScript>().Name_meco = "Bob";
         _cola.GetComponent<Script_Cola>().cabeza = enemy;
 
@@ -95,11 +118,13 @@ public class creadorEnemigos : MonoBehaviour
         clon_.GetComponent<Clon_Meco>().meco = enemy;
 
         enemys[0].SetActive(false);
+
+        
     }
 
     private int select_drop()
     {
-        int i = Random.Range(0, total_drops);
+        int i = Random.Range(0, total_drops-1);
         return i;
     }
 

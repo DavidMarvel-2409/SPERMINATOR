@@ -153,6 +153,15 @@ public class enemyScript : MonoBehaviour
             Destroy(this.gameObject);
             eliminar_cola();
         }
+        if (uterocolision.collider.CompareTag("bala"))
+        {
+            Destroy(this.gameObject);
+            eliminar_cola();
+            if (nombre_drop != "Nada")
+            {
+                Droping();
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D uterocolisiondos)
     {
@@ -160,6 +169,16 @@ public class enemyScript : MonoBehaviour
         {
             Destroy(this.gameObject);
             eliminar_cola();
+        }
+
+        if (uterocolisiondos.CompareTag("bala"))
+        {
+            Destroy(this.gameObject);
+            eliminar_cola();
+            if (nombre_drop != "Nada")
+            {
+                Droping();
+            }
         }
     }
 
@@ -171,7 +190,9 @@ public class enemyScript : MonoBehaviour
 
     public void Droping()
     {
+        drop.SetActive(true);
         GameObject Drop_clon = Instantiate(drop, transform.position, Quaternion.identity);
+        drop.SetActive(false);
         //eliminar_cola();
     }
     public void eliminar_cola()
