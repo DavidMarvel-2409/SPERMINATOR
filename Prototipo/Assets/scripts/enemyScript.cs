@@ -197,7 +197,7 @@ public class enemyScript : MonoBehaviour
     }
     public void eliminar_cola()
     {
-        _cola_.GetComponent<Script_Cola>().eliminar_cola();
+        //_cola_.GetComponent<Script_Cola>().eliminar_cola();
     }
 }
 

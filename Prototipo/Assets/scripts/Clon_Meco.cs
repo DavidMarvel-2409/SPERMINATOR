@@ -17,7 +17,10 @@ public class Clon_Meco : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        coor = new Vector3(meco.transform.position.x + 700, meco.transform.position.y, transform.position.z);
-        transform.position = coor;
+        else
+        {
+            coor = new Vector3(meco.transform.position.x + 700, meco.transform.position.y, transform.position.z);
+            transform.position = coor;
+        }
     }
 }

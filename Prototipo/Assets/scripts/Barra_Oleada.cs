@@ -25,7 +25,7 @@ public class Barra_Oleada : MonoBehaviour
     {
         if (IniciaOleada)
         {
-            tiempo -= 0.001f;
+            tiempo -= 0.5f * Time.deltaTime;
             oleada.fillAmount = tiempo / tiempoTotal;
         }
 

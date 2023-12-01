@@ -480,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ab8733a39c462d41a4cca03682ab3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: SampleScene
+  name: Nivel 1
   speed: 4.5
   tipa: {fileID: 427280957}
   tipo: {fileID: 119324663}

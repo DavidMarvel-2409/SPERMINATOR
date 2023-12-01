@@ -23,18 +23,16 @@ public class movement : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float shootCooldown;
-    // Start is called before the first frame update
+
     void Start()
     {
-        
         varVida = 100;
         Sonido_Disparo=GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-
         horizontalM = Input.GetAxisRaw("Horizontal");
         verticalM = Input.GetAxisRaw("Vertical");
         shoot = Input.GetKey(KeyCode.Space);
@@ -60,7 +58,7 @@ public class movement : MonoBehaviour
         }
         //scoretext.text = "Enemigos derrotados:" + score;
         //restantes.text = "Derrota esta candidad de enemigos:" + rest;
-       
+        
     }
 
     void Shoot()

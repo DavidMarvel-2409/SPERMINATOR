@@ -8,11 +8,14 @@ public class Controlador_general : MonoBehaviour
     public GameObject Inicio_oleada;
     public GameObject Player1;
     public GameObject Ovulo;
+    public GameObject panel_pausa;
+
+    public bool Menu_pausa;
     
 
     private void Start()
     {
-
+        Menu_pausa = false;
     }
     private void Update()
     {
@@ -33,5 +36,26 @@ public class Controlador_general : MonoBehaviour
             SceneManager.LoadScene("finalscene");
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                Menu_pausa = false;
+            }
+            else
+            {
+                Time.timeScale = 0;
+                Menu_pausa = true;
+            }
+        }
+        if (Menu_pausa == true)
+        {
+            panel_pausa.SetActive(true);
+        }
+        else
+        {
+            panel_pausa.SetActive(false);
+        }
     }
 }
