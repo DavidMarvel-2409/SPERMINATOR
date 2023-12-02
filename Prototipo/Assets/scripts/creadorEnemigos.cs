@@ -45,6 +45,9 @@ public class creadorEnemigos : MonoBehaviour
     private bool final_boss;
     private bool final_boss_check;
 
+
+    private float tiempo_spawn = 3;
+    private bool tiempo_spawn_check = false;
     //public int nivel;
 
 
@@ -70,7 +73,7 @@ public class creadorEnemigos : MonoBehaviour
         if (comienza == true)
         {
             spawn_espera += Time.deltaTime;
-            if (spawn_espera > 2)
+            if (spawn_espera > tiempo_spawn)
             {
                 spawn_espera = 0;
                 switch (selec_spawn())
@@ -90,15 +93,22 @@ public class creadorEnemigos : MonoBehaviour
             {
                 Spawn_boss();
             }
+
+            if (oleada == "Oleada 1" && tiempo_spawn_check == false)
+            {
+                tiempo_spawn *= 0.6f;
+                tiempo_spawn_check = true;
+            }
             //InvokeRepeating("CreateEnemies", 2.0f, creationTime);
         }
     }
 
     public void CreateEnemies(GameObject sSpawn)
     {
+
         if (nivel == "Nivel 1")
         {
-            if (oleada == "Oleada 0" || oleada == "Oleada 1" || oleada == "Oleada 2")
+            if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
                 enemys[0].SetActive(true);
                 GameObject enemy = Instantiate(enemys[0], sSpawn.transform.position, Quaternion.identity);
@@ -141,7 +151,7 @@ public class creadorEnemigos : MonoBehaviour
 
                 enemys[0].SetActive(false);
             }
-            else if (oleada == "Oleada 3")
+            else if (oleada == "Oleada 2" || oleada == "Oleada 3")
             {
                 int x = select_enemy(2);
                 enemys[x].SetActive(true);

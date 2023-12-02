@@ -12,6 +12,9 @@ public class CambioCinematica : MonoBehaviour
     public GameObject tipo;
     private Vector3 tipo_coor;
     private Vector3 tipa_coor;
+
+    private Vector3 tipo_origen;
+    private int direct;
     private void Start()
     {
         time = 0;
@@ -19,24 +22,36 @@ public class CambioCinematica : MonoBehaviour
         Debug.Log(tipo.transform);
         tipa_coor = tipa.transform.position;
         tipo_coor = tipo.transform.position;
-        tipo_coor.y = tipa_coor.y;
-        
+        if (SceneManager.GetActiveScene().name == "Cinematic")
+        {
+            tipo_coor.y = tipa_coor.y;
+        }
+        Time.timeScale = 1;
+        tipo_origen = tipo_coor;
+        direct = 1;
     }
 
     private void Update()
     {
         time += Time.deltaTime;
-        if (time < 3)
+        if (SceneManager.GetActiveScene().name == "Cinematic")
         {
-            mover();
-            //cambio();
+            if (time < 3)
+            {
+                mover();
+                //cambio();
+            }
         }
+        else if (SceneManager.GetActiveScene().name == "Cinematica 2")
+        {
+            nikiniki();
+        }
+        tipo.transform.position = tipo_coor;
+        tipa.transform.position = tipa_coor;
         if (time > 4)
         {
             cambio();
         }
-        tipo.transform.position = tipo_coor;
-        tipa.transform.position = tipa_coor;
     }
     private void mover()
     {
@@ -46,5 +61,21 @@ public class CambioCinematica : MonoBehaviour
     private void cambio()
     {
         SceneManager.LoadScene(name);
+    }
+
+    private void nikiniki()
+    {
+        if (tipo_coor.y > tipo_origen.y)
+        {
+            tipo_coor = tipo_origen;
+            direct *= -1;
+        }
+        else if (tipo_coor.y < tipo_origen.y - 2)
+        {
+            tipo_coor.y = tipo_origen.y - 2;
+            direct *= -1;
+        }
+
+        tipo_coor.y -= speed * direct * Time.deltaTime;
     }
 }

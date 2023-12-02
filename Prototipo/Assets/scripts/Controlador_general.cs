@@ -10,6 +10,8 @@ public class Controlador_general : MonoBehaviour
     public GameObject Ovulo;
     public GameObject panel_pausa;
 
+    public GameObject Panel_Win;
+
     public bool Menu_pausa;
     
 
@@ -33,9 +35,12 @@ public class Controlador_general : MonoBehaviour
 
         if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1)
         {
-            SceneManager.LoadScene("finalscene");
+            Time.timeScale = 0;
+            Panel_Win.SetActive(true);
+            //SceneManager.LoadScene("finalscene");
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 0)
@@ -56,6 +61,6 @@ public class Controlador_general : MonoBehaviour
         else
         {
             panel_pausa.SetActive(false);
-        }
+        }*/
     }
 }
