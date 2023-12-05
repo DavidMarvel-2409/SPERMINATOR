@@ -40,7 +40,7 @@ public class Controlador_general : MonoBehaviour
             //SceneManager.LoadScene("finalscene");
         }
 
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 0)
@@ -61,6 +61,6 @@ public class Controlador_general : MonoBehaviour
         else
         {
             panel_pausa.SetActive(false);
-        }*/
+        }
     }
 }

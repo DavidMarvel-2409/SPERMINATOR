@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class creadorEnemigos : MonoBehaviour
 {
+    public GameObject Player;
+
     public GameObject[] enemys;
     public GameObject cola;
     public GameObject[] clon;
@@ -42,6 +42,9 @@ public class creadorEnemigos : MonoBehaviour
     public string[] Nombre_drop;
     private int total_drops;
 
+    public GameObject Boss;
+    //public GameObject boss_firepoint;
+    public GameObject Boss_clon;
     private bool final_boss;
     private bool final_boss_check;
 
@@ -415,6 +418,7 @@ public class creadorEnemigos : MonoBehaviour
 
                 clon_.GetComponent<Clon_Meco>().meco = enemy;
                 enemys[x].SetActive(false);
+
             }
         }
 
@@ -423,29 +427,34 @@ public class creadorEnemigos : MonoBehaviour
 
     private int select_drop()
     {
-        int i = Random.Range(0, total_drops-1);
+        int i = UnityEngine.Random.Range(0, total_drops-1);
         return i;
     }
 
     private int selec_spawn()
     {
-        int op = Random.Range(0, 3);
+        int op = UnityEngine.Random.Range(0, 3);
         return op;
     }
 
     private int Select_Objetive()
     {
-        return Random.Range(0, 3);
+        return UnityEngine.Random.Range(0, 3);
     }
 
     private int select_enemy(int range)
     {
-        return Random.Range(0, range);
+        return UnityEngine.Random.Range(0, range);
     }
 
     private void Spawn_boss()
     {
         final_boss_check = true;
+        GameObject _boss = Instantiate(Boss, Spawns[0].transform.position, Quaternion.identity);
+        GameObject _boss_clon = Instantiate(Boss_clon, Spawns[0].transform.position, Quaternion.identity);
 
+        _boss.GetComponent<Jefe>().Player = Player.transform;
+        _boss.GetComponent<Jefe>().FPEnemigo = Boss.GetComponent<Jefe>().FPEnemigo;
+        _boss_clon.GetComponent<Clon_Sperminator>().Sperminator = _boss;
     }
 }

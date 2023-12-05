@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour
 {
-    [SerializeField] float speed;
+    public float speed;
+
+    private float speed_original;
         
     public float varVida;
 
@@ -28,6 +30,7 @@ public class movement : MonoBehaviour
     {
         varVida = 100;
         Sonido_Disparo=GetComponent<AudioSource>();
+        speed_original = speed;
     }
 
 
@@ -91,6 +94,11 @@ public class movement : MonoBehaviour
         {
             varVida += 20;
         }
+        if (npc.gameObject.CompareTag("speedpower"))
+        {
+            speed += 20;
+            Invoke("Back_speed", 5);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D npc)
@@ -106,6 +114,12 @@ public class movement : MonoBehaviour
         {
             varVida += 20;
         }
+        if (npc.gameObject.CompareTag("speedpower"))
+        {
+            speed += 20;
+            Invoke("Back_speed", 5);
+        }
+
         /*if (npc.gameObject.CompareTag("shootpower"))
         {
             espera = 0.1f;
@@ -114,5 +128,9 @@ public class movement : MonoBehaviour
         {
             speed += 50;
         }*/
+    }
+    private void Back_speed()
+    {
+        speed = speed_original;
     }
 }
