@@ -54,12 +54,15 @@ public class creadorEnemigos : MonoBehaviour
     //public int nivel;
 
 
+    public GameObject controlador_general;
+
+
     // Start is called before the first frame update
     void Start()
     {
         //SceneManager.GetActiveScene().buildIndex;
         nivel = SceneManager.GetActiveScene().name;
-        Debug.Log(nivel);
+        //Debug.Log(nivel);
         comienza = false;
         total_drops = drops.Length;
         spawn_espera = 0;
@@ -75,21 +78,24 @@ public class creadorEnemigos : MonoBehaviour
         oleada = Barra_oleada.GetComponent<Barra_Oleada>().texto.text;
         if (comienza == true)
         {
-            spawn_espera += Time.deltaTime;
-            if (spawn_espera > tiempo_spawn)
+            if (Barra_oleada.GetComponent<Barra_Oleada>().tiempo > 0.1f)
             {
-                spawn_espera = 0;
-                switch (selec_spawn())
+                spawn_espera += Time.deltaTime;
+                if (spawn_espera > tiempo_spawn)
                 {
-                    case 0:
-                        CreateEnemies(Spawns[0]);
-                    break;
-                    case 1:
-                        CreateEnemies(Spawns[1]);
-                    break;
-                    case 2:
-                        CreateEnemies(Spawns[2]);
-                    break;
+                    spawn_espera = 0;
+                    switch (selec_spawn())
+                    {
+                        case 0:
+                            CreateEnemies(Spawns[0]);
+                            break;
+                        case 1:
+                            CreateEnemies(Spawns[1]);
+                            break;
+                        case 2:
+                            CreateEnemies(Spawns[2]);
+                            break;
+                    }
                 }
             }
             if (final_boss == true && final_boss_check == false)
@@ -118,6 +124,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
@@ -162,6 +169,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
@@ -208,7 +216,7 @@ public class creadorEnemigos : MonoBehaviour
 
         if (nivel == "Nivel 2")
         {
-            if (oleada == "Oleada 0" || oleada == "Oleada 1" || oleada == "Oleada 2")
+            if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
                 int x = select_enemy(2);
                 enemys[x].SetActive(true);
@@ -216,6 +224,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
@@ -258,7 +267,7 @@ public class creadorEnemigos : MonoBehaviour
                 clon_.GetComponent<Clon_Meco>().meco = enemy;
                 enemys[x].SetActive(false);
             }
-            else if (oleada == "Oleada 3")
+            else if (oleada == "Oleada 3" || oleada == "Oleada 2")
             {
                 int x = select_enemy(3);
                 enemys[x].SetActive(true);
@@ -266,6 +275,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
@@ -315,7 +325,7 @@ public class creadorEnemigos : MonoBehaviour
 
         if (nivel == "Nivel 3")
         {
-            if (oleada == "Oleada 0" || oleada == "Oleada 1" || oleada == "Oleada 2")
+            if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
                 int x = select_enemy(3);
                 enemys[x].SetActive(true);
@@ -323,6 +333,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
@@ -365,7 +376,7 @@ public class creadorEnemigos : MonoBehaviour
                 clon_.GetComponent<Clon_Meco>().meco = enemy;
                 enemys[x].SetActive(false);
             }
-            else if (oleada == "Oleada 3")
+            else if (oleada == "Oleada 3" || oleada == "Oleada 2")
             {
                 final_boss = true;
                 int x = select_enemy(2);
@@ -374,6 +385,7 @@ public class creadorEnemigos : MonoBehaviour
                 contador_de_espermios += 1;
                 contadorEnemigosGeneral += 1;
                 texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
 
 
                 GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);

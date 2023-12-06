@@ -17,6 +17,8 @@ public class uterScript : MonoBehaviour
 
     public float vidaUter;
 
+    public int enemigos_muertos;
+
     private void Start()
     {
         instancia = this;
@@ -25,6 +27,7 @@ public class uterScript : MonoBehaviour
         direct_sclae = 1;                       //se inicializa en 1
         escala = 1;                             //se inicializa en 1
         escala_2 = 0;                           //se inicializa en 0
+        enemigos_muertos = 0;
     }
 
     private void Update()
@@ -84,6 +87,7 @@ public class uterScript : MonoBehaviour
         if (collision.gameObject.CompareTag("enemigo"))
         {
             vidaUter -= 10;
+            enemigos_muertos++;
         }
 
     }

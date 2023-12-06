@@ -14,6 +14,7 @@ public class movement : MonoBehaviour
 
     public float espera;
     public AudioSource Sonido_Disparo;
+    private float espera_original;
 
     public int rest;
     float horizontalM;
@@ -26,11 +27,15 @@ public class movement : MonoBehaviour
     public GameObject bulletPrefab;
     public float shootCooldown;
 
+    public int Enemigos_muertos;
+
     void Start()
     {
         varVida = 100;
         Sonido_Disparo=GetComponent<AudioSource>();
         speed_original = speed;
+        espera_original = espera;
+        Enemigos_muertos = 0;
     }
 
 
@@ -73,8 +78,9 @@ public class movement : MonoBehaviour
             Quaternion bulletRotation = firePoint.rotation;
 
             // Instanciar la bala y ajustar su rotación
-            GameObject bullet = Instantiate(bulletPrefab, firePoint.position, bulletRotation);
+            GameObject _bullet = Instantiate(bulletPrefab, firePoint.position, bulletRotation);
 
+            _bullet.GetComponent<bullet>().player = this.gameObject;
             
             // Reiniciar el temporizador de disparo
             shootCooldown = Time.time + espera; // Ajusta el valor según la velocidad de disparo deseada
@@ -88,7 +94,7 @@ public class movement : MonoBehaviour
         {
             npc.GetComponent<enemyScript>().eliminar_cola();
             Destroy(npc.gameObject);
-            
+            Enemigos_muertos -= 1;
         }
         if (npc.gameObject.CompareTag("vidapower"))
         {
@@ -98,6 +104,15 @@ public class movement : MonoBehaviour
         {
             speed += 20;
             Invoke("Back_speed", 5);
+        }
+        if (npc.gameObject.CompareTag("vidapower"))
+        {
+            varVida += 20;
+        }
+        if (npc.gameObject.CompareTag("shootpower"))
+        {
+            espera = espera_original * 0.6f;
+            Invoke("Back_cooldown", 10);
         }
     }
 
@@ -109,6 +124,7 @@ public class movement : MonoBehaviour
             Destroy(npc.gameObject);
             //npc.collider.GetComponent<enemyScript>().eliminar_cola();
             varVida -= 10;
+            Enemigos_muertos -= 1;
         }
         if (npc.gameObject.CompareTag("vidapower"))
         {
@@ -118,6 +134,11 @@ public class movement : MonoBehaviour
         {
             speed += 20;
             Invoke("Back_speed", 5);
+        }
+        if (npc.gameObject.CompareTag("shootpower"))
+        {
+            espera = espera_original * 0.6f;
+            Invoke("Back_cooldown", 10);
         }
 
         /*if (npc.gameObject.CompareTag("shootpower"))
@@ -132,5 +153,9 @@ public class movement : MonoBehaviour
     private void Back_speed()
     {
         speed = speed_original;
+    }
+    private void Back_cooldown()
+    {
+        espera = espera_original;
     }
 }

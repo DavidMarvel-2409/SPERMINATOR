@@ -13,11 +13,14 @@ public class Controlador_general : MonoBehaviour
     public GameObject Panel_Win;
 
     public bool Menu_pausa;
+
+    public int enemigos_en_escena;
     
 
     private void Start()
     {
         Menu_pausa = false;
+        enemigos_en_escena = 0;
     }
     private void Update()
     {
@@ -33,7 +36,10 @@ public class Controlador_general : MonoBehaviour
             SceneManager.LoadScene("Perdida");
         }
 
-        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1)
+
+        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1 
+            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos - 
+            Ovulo.GetComponent<uterScript>().enemigos_muertos == 0)
         {
             Time.timeScale = 0;
             Panel_Win.SetActive(true);

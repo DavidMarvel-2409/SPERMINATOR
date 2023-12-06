@@ -10,6 +10,7 @@ public class bullet : MonoBehaviour
     private float time;
     public int score;
     public int rest;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +46,12 @@ public class bullet : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
+            player.GetComponent<movement>().Enemigos_muertos++;
+
             npc.gameObject.GetComponent<enemyScript>().Droping();
             Destroy(npc.gameObject); // Elimina el enemigo
             Destroy(gameObject); // Elimina la bala
+
 
             // No es necesario incrementar el puntaje aquí, ya que el jugador lo hace
         }
