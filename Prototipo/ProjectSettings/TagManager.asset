@@ -13,6 +13,8 @@ TagManager:
   - vidapower
   - shootpower
   - speedpower
+  - Boss
+  - Proteccion_enemigo
   layers:
   - Default
   - TransparentFX

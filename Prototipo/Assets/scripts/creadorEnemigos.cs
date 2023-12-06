@@ -10,6 +10,7 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject[] enemys;
     public GameObject cola;
     public GameObject[] clon;
+    public GameObject proteccion_fuerte;
     public float creationTime;
     public float creationRangeY;
     public float creationRangeX;
@@ -119,98 +120,11 @@ public class creadorEnemigos : MonoBehaviour
         {
             if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
-                enemys[0].SetActive(true);
-                GameObject enemy = Instantiate(enemys[0], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[0], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-
-                enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-
-                enemys[0].SetActive(false);
+                Oleada(1, sSpawn);
             }
             else if (oleada == "Oleada 2" || oleada == "Oleada 3")
             {
-                int x = select_enemy(2);
-                enemys[x].SetActive(true);
-                GameObject enemy = Instantiate(enemys[x], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-                switch (x)
-                {
-                    case 0:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                        break;
-                    case 1:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                        break;
-                }
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-                enemys[x].SetActive(false);
+                Oleada(2, sSpawn);
             }
         }
 
@@ -218,108 +132,11 @@ public class creadorEnemigos : MonoBehaviour
         {
             if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
-                int x = select_enemy(2);
-                enemys[x].SetActive(true);
-                GameObject enemy = Instantiate(enemys[x], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-                switch (x)
-                {
-                    case 0:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                        break;
-                    case 1:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                        break;
-                }
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-                enemys[x].SetActive(false);
+                Oleada(2, sSpawn);
             }
             else if (oleada == "Oleada 3" || oleada == "Oleada 2")
             {
-                int x = select_enemy(3);
-                enemys[x].SetActive(true);
-                GameObject enemy = Instantiate(enemys[x], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-                switch (x)
-                {
-                    case 0:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                        break;
-                    case 1:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                        break;
-                    case 2:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Rex";
-                        break;
-                }
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-                enemys[x].SetActive(false);
+                Oleada(3, sSpawn);
             }
         }
 
@@ -327,115 +144,77 @@ public class creadorEnemigos : MonoBehaviour
         {
             if (oleada == "Oleada 0" || oleada == "Oleada 1")
             {
-                int x = select_enemy(3);
-                enemys[x].SetActive(true);
-                GameObject enemy = Instantiate(enemys[x], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-                switch (x)
-                {
-                    case 0:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                        break;
-                    case 1:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                        break;
-                }
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-                enemys[x].SetActive(false);
+                Oleada(3, sSpawn);
             }
             else if (oleada == "Oleada 3" || oleada == "Oleada 2")
             {
+                Oleada(3, sSpawn);
                 final_boss = true;
-                int x = select_enemy(2);
-                enemys[x+1].SetActive(true);
-                GameObject enemy = Instantiate(enemys[x+1], sSpawn.transform.position, Quaternion.identity);
-                contador_de_espermios += 1;
-                contadorEnemigosGeneral += 1;
-                texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
-                controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
-
-
-                GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
-                GameObject clon_ = Instantiate(clon[x+1], new Vector3(sSpawn.transform.position.x,
-                                                                    sSpawn.transform.position.y, 0), Quaternion.identity);
-
-                enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-                enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-                enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-                enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-                enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
-
-                enemy.GetComponent<enemyScript>().Ovulo = ovulo;
-
-                if (contador_de_espermios == 15)
-                {
-                    contador_de_espermios = 0;
-                    int i = select_drop();
-                    enemy.GetComponent<enemyScript>().drop = drops[i];
-                    enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
-                }
-                else
-                {
-                    enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
-                }
-                switch (x)
-                {
-                    case 0:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                        break;
-                    case 1:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                        break;
-                    case 2:
-                        enemy.GetComponent<enemyScript>().Name_meco = "Rex";
-                        break;
-                }
-                _cola.GetComponent<Script_Cola>().cabeza = enemy;
-
-                int op = Select_Objetive();
-                enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
-
-                clon_.GetComponent<Clon_Meco>().meco = enemy;
-                enemys[x].SetActive(false);
-
             }
         }
 
 
     }
+
+    private void Oleada(int num_enemys, GameObject sSpawn)
+    {
+        int x = select_enemy(num_enemys);
+        enemys[x].SetActive(true);
+        GameObject enemy = Instantiate(enemys[x], sSpawn.transform.position, Quaternion.identity);
+        contador_de_espermios += 1;
+        contadorEnemigosGeneral += 1;
+        texto.text = "Enemigos Totales:" + contadorEnemigosGeneral;
+        controlador_general.GetComponent<Controlador_general>().enemigos_en_escena += 1;
+
+
+        GameObject _cola = Instantiate(cola, sSpawn.transform.position, Quaternion.identity);
+        GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
+                                                            sSpawn.transform.position.y, 0), Quaternion.identity);
+
+        enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
+        enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
+        enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
+        enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
+        enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
+
+        enemy.GetComponent<enemyScript>().Ovulo = ovulo;
+
+        if (contador_de_espermios == 15)
+        {
+            contador_de_espermios = 0;
+            int i = select_drop();
+            enemy.GetComponent<enemyScript>().drop = drops[i];
+            enemy.GetComponent<enemyScript>().nombre_drop = Nombre_drop[i];
+        }
+        else
+        {
+            enemy.GetComponent<enemyScript>().nombre_drop = "Nada";
+        }
+        switch (x)
+        {
+            case 0:
+                enemy.GetComponent<enemyScript>().Name_meco = "Bob";
+                break;
+            case 1:
+                enemy.GetComponent<enemyScript>().Name_meco = "Dash";
+                break;
+            case 2:
+                enemy.GetComponent<enemyScript>().Name_meco = "Rex";
+                proteccion_fuerte.SetActive(true);
+                GameObject prote = Instantiate(proteccion_fuerte, sSpawn.transform.position, Quaternion.identity);
+                prote.GetComponent<Proteccion>().objetivo = enemy;
+                proteccion_fuerte.SetActive(false);
+                break;
+        }
+        _cola.GetComponent<Script_Cola>().cabeza = enemy;
+
+        int op = Select_Objetive();
+        enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
+
+        clon_.GetComponent<Clon_Meco>().meco = enemy;
+        enemys[x].SetActive(false);
+    }
+
 
     private int select_drop()
     {

@@ -114,6 +114,10 @@ public class movement : MonoBehaviour
             espera = espera_original * 0.6f;
             Invoke("Back_cooldown", 10);
         }
+        if (npc.gameObject.CompareTag("Proteccion_enemigo"))
+        {
+            Destroy(npc.gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D npc)
@@ -139,6 +143,10 @@ public class movement : MonoBehaviour
         {
             espera = espera_original * 0.6f;
             Invoke("Back_cooldown", 10);
+        }
+        if (npc.gameObject.CompareTag("Proteccion_enemigo"))
+        {
+            Destroy(npc.gameObject);
         }
 
         /*if (npc.gameObject.CompareTag("shootpower"))

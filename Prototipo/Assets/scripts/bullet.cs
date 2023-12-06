@@ -40,6 +40,11 @@ public class bullet : MonoBehaviour
 
             // No es necesario incrementar el puntaje aquí, ya que el jugador lo hace
         }
+        else if (npc.gameObject.CompareTag("Proteccion_enemigo"))
+        {
+            Destroy(npc.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D npc)
@@ -54,6 +59,11 @@ public class bullet : MonoBehaviour
 
 
             // No es necesario incrementar el puntaje aquí, ya que el jugador lo hace
+        }
+        else if (npc.gameObject.CompareTag("Proteccion_enemigo"))
+        {
+            Destroy(npc.gameObject);
+            Destroy(gameObject);
         }
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Controlador_general : MonoBehaviour
@@ -15,12 +16,22 @@ public class Controlador_general : MonoBehaviour
     public bool Menu_pausa;
 
     public int enemigos_en_escena;
+
+    public GameObject spawn_player;
+
+    public GameObject mapa;
     
 
     private void Start()
     {
         Menu_pausa = false;
         enemigos_en_escena = 0;
+        if (spawn_player.activeInHierarchy == true)
+        {
+            Player1.transform.position = spawn_player.transform.position;
+        }
+        setear_objetos_en_mapa("" + SceneManager.GetActiveScene().name);
+        Debug.Log("" + SceneManager.GetActiveScene().name);
     }
     private void Update()
     {
@@ -68,5 +79,100 @@ public class Controlador_general : MonoBehaviour
         {
             panel_pausa.SetActive(false);
         }
+
+        
+    }
+
+    private void setear_objetos_en_mapa(string nivel)
+    {
+        switch(nivel)
+        {
+            case "Nivel 1":
+                //lo deja todo tal cual esta
+                break;
+            case "Nivel 2":
+                a_la_izquierda();
+                break;
+            case "Nivel 3":
+                int op = op_random(2);
+                switch (op)
+                {
+                    case 0:
+                        //eligio la derecha por lo que se queda igual
+                        break;
+                    case 1:
+                        a_la_izquierda();
+                        break;
+                }
+                break;
+        }
+    }
+
+    private void a_la_izquierda()
+    {
+        Ovulo.GetComponent<Transform>().position = new Vector3(Ovulo.GetComponent<Transform>().position.x + distancia_reflejo(mapa, Ovulo),
+                                                                Ovulo.GetComponent<Transform>().position.y,
+                                                                Ovulo.GetComponent<Transform>().position.z);
+
+        //objetivos
+        int arr_obj_1;
+        arr_obj_1 = Spawner.GetComponent<creadorEnemigos>().Objetivos_1.Length;
+        for (int i = 0; i < arr_obj_1; i++)
+        {
+            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position =
+                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i]),
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.y,
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.z);
+        }
+        int arr_obj_2;
+        arr_obj_2 = Spawner.GetComponent<creadorEnemigos>().Objetivos_2.Length;
+        for (int i = 0; i < arr_obj_2; i++)
+        {
+            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position =
+                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i]),
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.y,
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.z);
+        }
+        int arr_obj_3;
+        arr_obj_3 = Spawner.GetComponent<creadorEnemigos>().Objetivos_3.Length;
+        for (int i = 0; i < arr_obj_3; i++)
+        {
+            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position =
+                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i]),
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.y,
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.z);
+        }
+        int arr_obj_4;
+        arr_obj_4 = Spawner.GetComponent<creadorEnemigos>().Objetivos_4.Length;
+        for (int i = 0; i < arr_obj_4; i++)
+        {
+            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position =
+                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i]),
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.y,
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.z);
+        }
+        int arr_obj_5;
+        arr_obj_5 = Spawner.GetComponent<creadorEnemigos>().Objetivos_5.Length;
+        for (int i = 0; i < arr_obj_5; i++)
+        {
+            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position =
+                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i]),
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.y,
+                            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.z);
+        }
+
+
+    }
+
+    private float distancia_reflejo(GameObject objeto1, GameObject objeto2)
+    {
+        float distancia_ = (objeto1.transform.position.x - objeto2.transform.position.x) * 2;
+
+        return distancia_;
+    }
+
+    private int op_random(int num)
+    {
+        return UnityEngine.Random.Range(0, num);
     }
 }
