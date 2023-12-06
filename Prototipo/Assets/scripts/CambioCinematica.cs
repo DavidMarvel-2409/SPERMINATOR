@@ -14,6 +14,7 @@ public class CambioCinematica : MonoBehaviour
     private Vector3 tipa_coor;
 
     private Vector3 tipo_origen;
+    private Vector3 tipa_origen;
     private int direct;
     private void Start()
     {
@@ -28,6 +29,7 @@ public class CambioCinematica : MonoBehaviour
         }
         Time.timeScale = 1;
         tipo_origen = tipo_coor;
+        tipa_origen = tipa_coor;
         direct = 1;
     }
 
@@ -45,6 +47,10 @@ public class CambioCinematica : MonoBehaviour
         else if (SceneManager.GetActiveScene().name == "Cinematica 2")
         {
             nikiniki();
+        }
+        else if (SceneManager.GetActiveScene().name == "Cinematica 3")
+        {
+            nikiniki2();
         }
         tipo.transform.position = tipo_coor;
         tipa.transform.position = tipa_coor;
@@ -77,5 +83,20 @@ public class CambioCinematica : MonoBehaviour
         }
 
         tipo_coor.y -= speed * direct * Time.deltaTime;
+    }
+    private void nikiniki2()
+    {
+        if (tipa_coor.y > tipa_origen.y)
+        {
+            tipa_coor = tipa_origen;
+            direct *= -1;
+        }
+        else if (tipa_coor.y < tipa_origen.y - 2)
+        {
+            tipa_coor.y = tipa_origen.y - 2;
+            direct *= -1;
+        }
+
+        tipa_coor.y -= speed * direct * Time.deltaTime;
     }
 }

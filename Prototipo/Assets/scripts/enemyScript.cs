@@ -17,6 +17,7 @@ public class enemyScript : MonoBehaviour
     //Rex es el fuerte
 
     public GameObject Ovulo;
+    public GameObject Player;
 
     public GameObject[] Objetivos_1_;
     public GameObject[] Objetivos_2_;
@@ -30,6 +31,8 @@ public class enemyScript : MonoBehaviour
     public GameObject drop;
     public string nombre_drop;
 
+    public int vida;
+
     void Start()
     {
     }
@@ -42,6 +45,10 @@ public class enemyScript : MonoBehaviour
         if (distancia_objetivo(Objetivo_Auxiliar) < 10)
         {
             Cambio_de_objetivo(Objetivo_Auxiliar);
+        }
+        if (vida <= 0)
+        {
+            me_muero();
         }
 
     }
@@ -150,9 +157,11 @@ public class enemyScript : MonoBehaviour
     {
         if (uterocolision.collider.CompareTag("UterPoint"))
         {
-            Destroy(this.gameObject);
-            eliminar_cola();
+            me_muero();
+            /*Destroy(this.gameObject);
+            eliminar_cola();*/
         }
+        /*
         if (uterocolision.collider.CompareTag("bala"))
         {
             Destroy(this.gameObject);
@@ -161,17 +170,18 @@ public class enemyScript : MonoBehaviour
             {
                 Droping();
             }
-        }
+        }*/
     }
     private void OnTriggerEnter2D(Collider2D uterocolisiondos)
     {
         if (uterocolisiondos.CompareTag("UterPoint"))
         {
-            Destroy(this.gameObject);
-            eliminar_cola();
+            me_muero();
+            /*Destroy(this.gameObject);
+            eliminar_cola();*/
         }
 
-        if (uterocolisiondos.CompareTag("bala"))
+        /*if (uterocolisiondos.CompareTag("bala"))
         {
             Destroy(this.gameObject);
             eliminar_cola();
@@ -179,7 +189,7 @@ public class enemyScript : MonoBehaviour
             {
                 Droping();
             }
-        }
+        }*/
     }
 
     private int select_op()
@@ -195,9 +205,16 @@ public class enemyScript : MonoBehaviour
         drop.SetActive(false);
         //eliminar_cola();
     }
+    private void me_muero()
+    {
+        //Debug.Log("me mori");
+        eliminar_cola();
+        Player.GetComponent<movement>().Enemigos_muertos++;
+        Destroy(this.gameObject);
+    }
     public void eliminar_cola()
     {
-        //_cola_.GetComponent<Script_Cola>().eliminar_cola();
+        _cola_.GetComponent<Script_Cola>().eliminar_cola();
     }
 }
 

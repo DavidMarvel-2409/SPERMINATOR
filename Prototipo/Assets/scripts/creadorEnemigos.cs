@@ -10,7 +10,8 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject[] enemys;
     public GameObject cola;
     public GameObject[] clon;
-    public GameObject proteccion_fuerte;
+    public int[] vidas_mecos;
+    //public GameObject proteccion_fuerte;
     public float creationTime;
     public float creationRangeY;
     public float creationRangeX;
@@ -46,7 +47,7 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject Boss;
     //public GameObject boss_firepoint;
     public GameObject Boss_clon;
-    private bool final_boss;
+    public bool final_boss;
     private bool final_boss_check;
 
 
@@ -99,7 +100,7 @@ public class creadorEnemigos : MonoBehaviour
                     }
                 }
             }
-            if (final_boss == true && final_boss_check == false)
+            if (final_boss == true && final_boss_check == false && Time.timeScale > 0)
             {
                 Spawn_boss();
             }
@@ -142,14 +143,14 @@ public class creadorEnemigos : MonoBehaviour
 
         if (nivel == "Nivel 3")
         {
-            if (oleada == "Oleada 0" || oleada == "Oleada 1")
+            if (oleada == "Oleada 0" || oleada == "Oleada 1" || oleada == "Oleada 2")
             {
                 Oleada(3, sSpawn);
             }
-            else if (oleada == "Oleada 3" || oleada == "Oleada 2")
+            else if (oleada == "Oleada 3")
             {
                 Oleada(3, sSpawn);
-                final_boss = true;
+                //final_boss = true;
             }
         }
 
@@ -178,6 +179,8 @@ public class creadorEnemigos : MonoBehaviour
         enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
 
         enemy.GetComponent<enemyScript>().Ovulo = ovulo;
+        enemy.GetComponent<enemyScript>().Player = Player;
+
 
         if (contador_de_espermios == 15)
         {
@@ -194,19 +197,19 @@ public class creadorEnemigos : MonoBehaviour
         {
             case 0:
                 enemy.GetComponent<enemyScript>().Name_meco = "Bob";
+                enemy.GetComponent<enemyScript>().vida = 1;
                 break;
             case 1:
                 enemy.GetComponent<enemyScript>().Name_meco = "Dash";
+                enemy.GetComponent<enemyScript>().vida = 1;
                 break;
             case 2:
                 enemy.GetComponent<enemyScript>().Name_meco = "Rex";
-                proteccion_fuerte.SetActive(true);
-                GameObject prote = Instantiate(proteccion_fuerte, sSpawn.transform.position, Quaternion.identity);
-                prote.GetComponent<Proteccion>().objetivo = enemy;
-                proteccion_fuerte.SetActive(false);
+                enemy.GetComponent<enemyScript>().vida = 3;
                 break;
         }
         _cola.GetComponent<Script_Cola>().cabeza = enemy;
+        enemy.GetComponent<enemyScript>()._cola_ = _cola;
 
         int op = Select_Objetive();
         enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];

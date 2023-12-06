@@ -118,7 +118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3005977241994565337
 Transform:
   m_ObjectHideFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   velocidadRotacion: 4
   Name_meco: Rex
   Ovulo: {fileID: 0}
+  Player: {fileID: 0}
   Objetivos_1_:
   - {fileID: 0}
   - {fileID: 0}
@@ -227,6 +228,7 @@ MonoBehaviour:
   _cola_: {fileID: 0}
   drop: {fileID: 0}
   nombre_drop: Nada
+  vida: 2
 --- !u!61 &3741999712203248227
 BoxCollider2D:
   m_ObjectHideFlags: 0

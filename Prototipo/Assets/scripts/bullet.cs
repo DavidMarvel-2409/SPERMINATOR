@@ -34,16 +34,13 @@ public class bullet : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
-            npc.GetComponent<enemyScript>().eliminar_cola();
-            Destroy(npc.gameObject); // Elimina el enemigo
+            //player.GetComponent<movement>().Enemigos_muertos++;
+            npc.gameObject.GetComponent<enemyScript>().vida -= 1;
+            /*npc.gameObject.GetComponent<enemyScript>().Droping();
+            Destroy(npc.gameObject); // Elimina el enemigo*/
             Destroy(gameObject); // Elimina la bala
 
             // No es necesario incrementar el puntaje aquí, ya que el jugador lo hace
-        }
-        else if (npc.gameObject.CompareTag("Proteccion_enemigo"))
-        {
-            Destroy(npc.gameObject);
-            Destroy(gameObject);
         }
     }
 
@@ -51,19 +48,14 @@ public class bullet : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
-            player.GetComponent<movement>().Enemigos_muertos++;
-
-            npc.gameObject.GetComponent<enemyScript>().Droping();
-            Destroy(npc.gameObject); // Elimina el enemigo
+            //player.GetComponent<movement>().Enemigos_muertos++;
+            npc.gameObject.GetComponent<enemyScript>().vida -= 1;
+            /*npc.gameObject.GetComponent<enemyScript>().Droping();
+            Destroy(npc.gameObject); // Elimina el enemigo*/
             Destroy(gameObject); // Elimina la bala
 
 
             // No es necesario incrementar el puntaje aquí, ya que el jugador lo hace
-        }
-        else if (npc.gameObject.CompareTag("Proteccion_enemigo"))
-        {
-            Destroy(npc.gameObject);
-            Destroy(gameObject);
         }
     }
 

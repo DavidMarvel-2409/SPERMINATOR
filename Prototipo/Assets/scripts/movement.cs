@@ -92,9 +92,9 @@ public class movement : MonoBehaviour
     {
         if (npc.gameObject.CompareTag("enemigo"))
         {
-            npc.GetComponent<enemyScript>().eliminar_cola();
-            Destroy(npc.gameObject);
-            Enemigos_muertos -= 1;
+            //npc.GetComponent<enemyScript>().eliminar_cola();
+            npc.GetComponent<enemyScript>().vida--;
+            //Enemigos_muertos -= 1;
         }
         if (npc.gameObject.CompareTag("vidapower"))
         {
@@ -122,13 +122,12 @@ public class movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D npc)
     {
-        if(npc.gameObject.CompareTag("enemigo"))
+        if (npc.gameObject.CompareTag("enemigo"))
         {
-
-            Destroy(npc.gameObject);
-            //npc.collider.GetComponent<enemyScript>().eliminar_cola();
+            //npc.GetComponent<enemyScript>().eliminar_cola();
+            npc.gameObject.GetComponent<enemyScript>().vida--;
             varVida -= 10;
-            Enemigos_muertos -= 1;
+            //Enemigos_muertos -= 1;
         }
         if (npc.gameObject.CompareTag("vidapower"))
         {

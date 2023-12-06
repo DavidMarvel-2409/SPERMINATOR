@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Controlador_general : MonoBehaviour
@@ -10,20 +11,27 @@ public class Controlador_general : MonoBehaviour
     public GameObject Player1;
     public GameObject Ovulo;
     public GameObject panel_pausa;
+    private string nivel;
 
     public GameObject Panel_Win;
+    public GameObject Panel_Lose;
+    public GameObject precentacion_jefe;
 
     public bool Menu_pausa;
 
     public int enemigos_en_escena;
+    private bool precentacion_check = false;
 
     public GameObject spawn_player;
 
     public GameObject mapa;
-    
+
+    public TextMeshProUGUI oleada_text;
+
 
     private void Start()
     {
+        nivel = SceneManager.GetActiveScene().name;
         Menu_pausa = false;
         enemigos_en_escena = 0;
         if (spawn_player.activeInHierarchy == true)
@@ -31,10 +39,19 @@ public class Controlador_general : MonoBehaviour
             Player1.transform.position = spawn_player.transform.position;
         }
         setear_objetos_en_mapa("" + SceneManager.GetActiveScene().name);
-        Debug.Log("" + SceneManager.GetActiveScene().name);
+        //Debug.Log("" + SceneManager.GetActiveScene().name);
     }
     private void Update()
     {
+
+        if (nivel == "Nivel 3" && oleada_text.text == "Oleada 3" && precentacion_check == false)
+        {
+            precentacion_check = true;
+            Time.timeScale = 0;
+            spawn_player.GetComponent<creadorEnemigos>().final_boss = true;
+            precentacion_jefe.SetActive(true);
+        }
+
         if (Vector3.Distance(Player1.transform.position, Ovulo.transform.position) < 120)
         {
             Spawner.GetComponent<creadorEnemigos>().comienza = true;
@@ -44,16 +61,17 @@ public class Controlador_general : MonoBehaviour
         
         if ( Ovulo.GetComponent<uterScript>().vidaUter <= 0 || Player1.GetComponent<movement>().varVida == 0)
         {
-            SceneManager.LoadScene("Perdida");
+            //SceneManager.LoadScene("Perdida");
+            Time.timeScale = 0;
+            Panel_Lose.SetActive(true);
         }
 
 
         if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1 
-            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos - 
-            Ovulo.GetComponent<uterScript>().enemigos_muertos == 0)
+            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos == 0)
         {
-            Time.timeScale = 0;
             Panel_Win.SetActive(true);
+            Time.timeScale = 0;
             //SceneManager.LoadScene("finalscene");
         }
 
@@ -91,7 +109,7 @@ public class Controlador_general : MonoBehaviour
                 //lo deja todo tal cual esta
                 break;
             case "Nivel 2":
-                a_la_izquierda();
+                a_la_Derecha();
                 break;
             case "Nivel 3":
                 int op = op_random(2);
@@ -101,14 +119,14 @@ public class Controlador_general : MonoBehaviour
                         //eligio la derecha por lo que se queda igual
                         break;
                     case 1:
-                        a_la_izquierda();
+                        a_la_Derecha();
                         break;
                 }
                 break;
         }
     }
 
-    private void a_la_izquierda()
+    private void a_la_Derecha()
     {
         Ovulo.GetComponent<Transform>().position = new Vector3(Ovulo.GetComponent<Transform>().position.x + distancia_reflejo(mapa, Ovulo),
                                                                 Ovulo.GetComponent<Transform>().position.y,

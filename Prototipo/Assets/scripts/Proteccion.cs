@@ -15,5 +15,14 @@ public class Proteccion : MonoBehaviour
     {
         transform.position = objetivo.transform.position;
         transform.rotation = objetivo.transform.rotation;
+        if (objetivo == null)
+        {
+            destruirme();
+        }
+    }
+
+    private void destruirme()
+    {
+        Destroy(this.gameObject);
     }
 }
