@@ -55,7 +55,7 @@ public class movement : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, angulo), velocidadRotacion * Time.deltaTime);
         }
 
-        if (shoot)
+        if (shoot && Time.timeScale > 0)
         {
             Shoot();
         }
