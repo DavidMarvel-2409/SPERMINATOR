@@ -6647,7 +6647,7 @@ MonoBehaviour:
   - {fileID: 6966442877412708577, guid: 7b586e3412888fd4f9936393975863cb, type: 3}
   - {fileID: 4807954866206637247, guid: c73f47f41f6032c41830d4c261a22097, type: 3}
   - {fileID: 579733984976601689, guid: 385837d97a7fc4a4f915fb52b0e60337, type: 3}
-  vidas_mecos: 
+  vidas_mecos: 010000000100000003000000
   creationTime: 1
   creationRangeY: 100
   creationRangeX: 100
@@ -6689,6 +6689,7 @@ MonoBehaviour:
   Nombre_drop:
   - Vida
   - Shoot
+  - Speed
   - Nada
   Boss: {fileID: 1512943731175243355, guid: 91e05e6a09f1716428658481870f9839, type: 3}
   Boss_clon: {fileID: 3026891755007470759, guid: 74c9f26439e261a42aa158a8fecc1706, type: 3}

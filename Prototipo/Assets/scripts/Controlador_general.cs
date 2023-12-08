@@ -47,9 +47,9 @@ public class Controlador_general : MonoBehaviour
         if (nivel == "Nivel 3" && oleada_text.text == "Oleada 3" && precentacion_check == false)
         {
             precentacion_check = true;
-            Time.timeScale = 0;
-            spawn_player.GetComponent<creadorEnemigos>().final_boss = true;
             precentacion_jefe.SetActive(true);
+            Time.timeScale = 0;
+            Spawner.GetComponent<creadorEnemigos>().final_boss = true;
         }
 
         if (Vector3.Distance(Player1.transform.position, Ovulo.transform.position) < 120)

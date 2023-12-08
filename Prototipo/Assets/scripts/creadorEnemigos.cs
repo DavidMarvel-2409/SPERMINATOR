@@ -198,15 +198,15 @@ public class creadorEnemigos : MonoBehaviour
         {
             case 0:
                 enemy.GetComponent<enemyScript>().Name_meco = "Bob";
-                enemy.GetComponent<enemyScript>().vida = 1;
+                enemy.GetComponent<enemyScript>().vida = vidas_mecos[0];
                 break;
             case 1:
                 enemy.GetComponent<enemyScript>().Name_meco = "Dash";
-                enemy.GetComponent<enemyScript>().vida = 1;
+                enemy.GetComponent<enemyScript>().vida = vidas_mecos[1];
                 break;
             case 2:
                 enemy.GetComponent<enemyScript>().Name_meco = "Rex";
-                enemy.GetComponent<enemyScript>().vida = 3;
+                enemy.GetComponent<enemyScript>().vida = vidas_mecos[2];
                 break;
         }
         _cola.GetComponent<Script_Cola>().cabeza = enemy;
@@ -248,7 +248,7 @@ public class creadorEnemigos : MonoBehaviour
         GameObject _boss = Instantiate(Boss, Spawns[0].transform.position, Quaternion.identity);
         GameObject _boss_clon = Instantiate(Boss_clon, Spawns[0].transform.position, Quaternion.identity);
 
-        _boss.GetComponent<Jefe>().Player = Player.transform;
+        _boss.GetComponent<Jefe>().Player = Player;
         _boss.GetComponent<Jefe>().FPEnemigo = Boss.GetComponent<Jefe>().FPEnemigo;
         _boss.GetComponent<Jefe>().Objetivo_central = Boss_objetivo;
         _boss.GetComponent<Jefe>().Objetivo = Boss_objetivo;

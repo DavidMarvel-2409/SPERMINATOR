@@ -13,61 +13,50 @@ public class Jefe : MonoBehaviour
     
     private float timeBtwShots;
     public float startTimeBtwShots;
+
+    public float distancia_seguimiento;
     
     public float vida = 100;
     public Transform FPEnemigo;
-    public Transform Player;
+    public GameObject Player;
     public GameObject EBPrefab;
 
     public GameObject Objetivo;
+    private GameObject Objetivo_aux;
+    private GameObject Objetivo_anterior;
     public GameObject Objetivo_central;
+
+    private Vector2 coor_boss;
+    private Vector2 coor_player;
+    private Vector2 coor_objective;
+
+    public float speed_boss;
 
     Rigidbody2D rb;
 
     void Start()
     {
         //StartCoroutine(disparar());
-        Player = GameObject.FindGameObjectWithTag("Player").transform;
+        Player = GameObject.FindGameObjectWithTag("Player");
         timeBtwShots = startTimeBtwShots;
         rb = GetComponent<Rigidbody2D>();
+        Objetivo_aux = Objetivo;
+        Objetivo_anterior = Player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //StartCoroutine(disparar());
+        coor_boss = new Vector2(transform.position.x, transform.position.y);
+        coor_player = new Vector2(Player.transform.position.x, Player.transform.position.y);
+        coor_objective = new Vector2(Objetivo.transform.position.x, Objetivo.transform.position.y);
 
-        //Vector3 pos = transform.position;
-
-        //pos += (movement.Player_Instance.transform.position - transform.position).normalized * movespeed * Time.deltaTime;
-
-        //transform.position = pos;
-
-        /*if (transform.position.x < -10f)
+        if (Vector2.Distance(coor_boss, coor_objective) > 5)
         {
-            //Destroy(gameObject);
-        }*/
-
-        //transform.up = Player.position - transform.position;
-        //transform.up = new Vector3(Player.position.x - transform.position.x, Player.transform.position.y - transform.position.y, transform.position.z);
-
-        if (Vector2.Distance(transform.position, Player.position) > stoppingDistance)
-        {
-            //transform.position = Vector2.MoveTowards(transform.position, Player.position, movespeed * Time.deltaTime);
-            rb.AddForce((Player.position - transform.position) * ImpulsePower, ForceMode2D.Impulse);
+            cambio_de_objetivo();
         }
-        
-        else if (Vector2.Distance(transform.position, Player.position) < stoppingDistance && Vector2.Distance(transform.position, Player.position) > retreatDistance)
-        {
-            //transform.position = this.transform.position;
-        }
-        
-        else if (Vector2.Distance(transform.position, Player.position) < retreatDistance)
-        {
-            //transform.position = Vector2.MoveTowards(transform.position, Player.position, -movespeed * Time.deltaTime);
 
-            rb.AddForce((-Player.position + transform.position) * BackPower, ForceMode2D.Force);
-        }
+        Movimiento();
 
         if (timeBtwShots <= 0)
         {
@@ -104,4 +93,32 @@ public class Jefe : MonoBehaviour
             }
         }
     }
+
+    private void cambio_de_objetivo()
+    {
+        GameObject aux;
+        int x;
+        do
+        {
+            x = select_random(Objetivo.GetComponent<Objetivos_boss>().objetivo.Length);
+            aux = Objetivo.GetComponent<Objetivos_boss>().objetivo[x];
+        } while (aux == Objetivo_anterior);
+
+        Objetivo = aux;
+        coor_objective = new Vector2(Objetivo.transform.position.x, Objetivo.transform.position.y);
+    }
+
+    private int select_random(int num)
+    {
+        int a = UnityEngine.Random.Range(0, num);
+        return a;
+    }
+
+    private void Movimiento()
+    {
+        Vector2 movimiento = new Vector2(coor_objective.x - coor_boss.x, coor_objective.y - coor_boss.y);
+        movimiento.Normalize();
+        transform.Translate(movimiento * speed_boss * Time.deltaTime, Space.World);
+    }
+
 }
