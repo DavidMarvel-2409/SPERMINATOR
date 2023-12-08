@@ -19,6 +19,9 @@ public class Jefe : MonoBehaviour
     public Transform Player;
     public GameObject EBPrefab;
 
+    public GameObject Objetivo;
+    public GameObject Objetivo_central;
+
     Rigidbody2D rb;
 
     void Start()

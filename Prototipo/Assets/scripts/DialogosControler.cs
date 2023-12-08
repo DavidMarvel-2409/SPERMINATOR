@@ -12,6 +12,8 @@ public class DialogosControler : MonoBehaviour
     public GameObject pantalla_dialogo;
     public GameObject cara2;
 
+    public GameObject nave;
+
     void Start()
     {
         texto.text = Dialogo[index_text];
@@ -37,6 +39,7 @@ public class DialogosControler : MonoBehaviour
         if (index_text ==  Dialogo.Length - 1)
         {
             cara2.SetActive(true);
+            nave.SetActive(true);
         }
     }
 }

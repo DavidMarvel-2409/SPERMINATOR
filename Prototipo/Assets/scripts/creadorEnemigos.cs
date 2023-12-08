@@ -49,6 +49,7 @@ public class creadorEnemigos : MonoBehaviour
     public GameObject Boss_clon;
     public bool final_boss;
     private bool final_boss_check;
+    public GameObject Boss_objetivo;
 
 
     private float tiempo_spawn = 3;
@@ -249,6 +250,9 @@ public class creadorEnemigos : MonoBehaviour
 
         _boss.GetComponent<Jefe>().Player = Player.transform;
         _boss.GetComponent<Jefe>().FPEnemigo = Boss.GetComponent<Jefe>().FPEnemigo;
+        _boss.GetComponent<Jefe>().Objetivo_central = Boss_objetivo;
+        _boss.GetComponent<Jefe>().Objetivo = Boss_objetivo;
+
         _boss_clon.GetComponent<Clon_Sperminator>().Sperminator = _boss;
     }
 }
