@@ -23,11 +23,7 @@ public class creadorEnemigos : MonoBehaviour
 
     public string nivel;
 
-    public GameObject[] Objetivos_1;
-    public GameObject[] Objetivos_2;
-    public GameObject[] Objetivos_3;
-    public GameObject[] Objetivos_4;
-    public GameObject[] Objetivos_5;
+    public GameObject[] Objetivos;
 
     public GameObject Barra_oleada;
     private string oleada;
@@ -45,7 +41,6 @@ public class creadorEnemigos : MonoBehaviour
     private int total_drops;
 
     public GameObject Boss;
-    //public GameObject boss_firepoint;
     public GameObject Boss_clon;
     public bool final_boss;
     private bool final_boss_check;
@@ -173,11 +168,7 @@ public class creadorEnemigos : MonoBehaviour
         GameObject clon_ = Instantiate(clon[x], new Vector3(sSpawn.transform.position.x,
                                                             sSpawn.transform.position.y, 0), Quaternion.identity);
 
-        enemy.GetComponent<enemyScript>().Objetivos_1_ = Objetivos_1;
-        enemy.GetComponent<enemyScript>().Objetivos_2_ = Objetivos_2;
-        enemy.GetComponent<enemyScript>().Objetivos_3_ = Objetivos_3;
-        enemy.GetComponent<enemyScript>().Objetivos_4_ = Objetivos_4;
-        enemy.GetComponent<enemyScript>().Objetivos_5_ = Objetivos_5;
+        enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos[Select_Objetive(Objetivos.Length)];
 
         enemy.GetComponent<enemyScript>().Ovulo = ovulo;
         enemy.GetComponent<enemyScript>().Player = Player;
@@ -212,13 +203,14 @@ public class creadorEnemigos : MonoBehaviour
         _cola.GetComponent<Script_Cola>().cabeza = enemy;
         enemy.GetComponent<enemyScript>()._cola_ = _cola;
 
-        int op = Select_Objetive();
-        enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
+        //int op = Select_Objetive();
+        //enemy.GetComponent<enemyScript>().Objetivo_Auxiliar = Objetivos_1[op];
 
         clon_.GetComponent<Clon_Meco>().meco = enemy;
         enemys[x].SetActive(false);
     }
 
+    
 
     private int select_drop()
     {
@@ -232,9 +224,9 @@ public class creadorEnemigos : MonoBehaviour
         return op;
     }
 
-    private int Select_Objetive()
+    private int Select_Objetive(int i)
     {
-        return UnityEngine.Random.Range(0, 3);
+        return UnityEngine.Random.Range(0, i);
     }
 
     private int select_enemy(int range)

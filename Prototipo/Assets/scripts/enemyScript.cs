@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class enemyScript : MonoBehaviour
@@ -19,11 +20,11 @@ public class enemyScript : MonoBehaviour
     public GameObject Ovulo;
     public GameObject Player;
 
-    public GameObject[] Objetivos_1_;
+    /*public GameObject[] Objetivos_1_;
     public GameObject[] Objetivos_2_;
     public GameObject[] Objetivos_3_;
     public GameObject[] Objetivos_4_;
-    public GameObject[] Objetivos_5_;
+    public GameObject[] Objetivos_5_;*/
     public GameObject Objetivo_Auxiliar;
 
     public GameObject _cola_;
@@ -87,69 +88,17 @@ public class enemyScript : MonoBehaviour
 
     private void Cambio_de_objetivo(GameObject _Actual)
     {
-        if (_Actual == Objetivos_1_[0] || _Actual == Objetivos_1_[1] || _Actual == Objetivos_1_[2])
+        switch (select_op(_Actual.GetComponent<EnemyObjetives>().objetives.Length))
         {
-            switch (select_op())
-            {
-                case 0:
-                    Objetivo_Auxiliar = Objetivos_2_[0];
-                    break;
-                case 1:
-                    Objetivo_Auxiliar = Objetivos_2_[1];
-                    break;
-                case 2:
-                    Objetivo_Auxiliar = Objetivos_2_[2];
-                    break;
-            }
-        }
-        else if (_Actual == Objetivos_2_[0] || _Actual == Objetivos_2_[1] || _Actual == Objetivos_2_[2])
-        {
-            switch (select_op())
-            {
-                case 0:
-                    Objetivo_Auxiliar = Objetivos_3_[0];
-                    break;
-                case 1:
-                    Objetivo_Auxiliar = Objetivos_3_[1];
-                    break;
-                case 2:
-                    Objetivo_Auxiliar = Objetivos_3_[2];
-                    break;
-            }
-        }
-        else if (_Actual == Objetivos_3_[0] || _Actual == Objetivos_3_[1] || _Actual == Objetivos_3_[2])
-        {
-            switch (select_op())
-            {
-                case 0:
-                    Objetivo_Auxiliar = Objetivos_4_[0];
-                    break;
-                case 1:
-                    Objetivo_Auxiliar = Objetivos_4_[1];
-                    break;
-                case 2:
-                    Objetivo_Auxiliar = Objetivos_4_[2];
-                    break;
-            }
-        }
-        else if (_Actual == Objetivos_4_[0] || _Actual == Objetivos_4_[1] || _Actual == Objetivos_4_[2])
-        {
-            switch (select_op())
-            {
-                case 0:
-                    Objetivo_Auxiliar = Objetivos_5_[0];
-                    break;
-                case 1:
-                    Objetivo_Auxiliar = Objetivos_5_[1];
-                    break;
-                case 2:
-                    Objetivo_Auxiliar = Objetivos_5_[2];
-                    break;
-            }
-        }
-        else if (_Actual == Objetivos_5_[0] || _Actual == Objetivos_5_[1] || _Actual == Objetivos_5_[2])
-        {
-            Objetivo_Auxiliar = Ovulo;
+            case 0:
+                Objetivo_Auxiliar = _Actual.GetComponent<EnemyObjetives>().objetives[0];
+                break;
+            case 1:
+                Objetivo_Auxiliar = _Actual.GetComponent<EnemyObjetives>().objetives[1];
+                break;
+            case 2:
+                Objetivo_Auxiliar = _Actual.GetComponent<EnemyObjetives>().objetives[2];
+                break;
         }
     }
 
@@ -158,43 +107,19 @@ public class enemyScript : MonoBehaviour
         if (uterocolision.collider.CompareTag("UterPoint"))
         {
             me_muero();
-            /*Destroy(this.gameObject);
-            eliminar_cola();*/
         }
-        /*
-        if (uterocolision.collider.CompareTag("bala"))
-        {
-            Destroy(this.gameObject);
-            eliminar_cola();
-            if (nombre_drop != "Nada")
-            {
-                Droping();
-            }
-        }*/
     }
     private void OnTriggerEnter2D(Collider2D uterocolisiondos)
     {
         if (uterocolisiondos.CompareTag("UterPoint"))
         {
             me_muero();
-            /*Destroy(this.gameObject);
-            eliminar_cola();*/
         }
-
-        /*if (uterocolisiondos.CompareTag("bala"))
-        {
-            Destroy(this.gameObject);
-            eliminar_cola();
-            if (nombre_drop != "Nada")
-            {
-                Droping();
-            }
-        }*/
     }
 
-    private int select_op()
+    private int select_op(int i)
     {
-        int op = Random.Range(0, 3);
+        int op = Random.Range(0, i);
         return op;
     }
 
@@ -203,11 +128,9 @@ public class enemyScript : MonoBehaviour
         drop.SetActive(true);
         GameObject Drop_clon = Instantiate(drop, transform.position, Quaternion.identity);
         drop.SetActive(false);
-        //eliminar_cola();
     }
     private void me_muero()
     {
-        //Debug.Log("me mori");
         eliminar_cola();
         Player.GetComponent<movement>().Enemigos_muertos++;
         Destroy(this.gameObject);

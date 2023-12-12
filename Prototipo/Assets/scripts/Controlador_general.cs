@@ -29,6 +29,8 @@ public class Controlador_general : MonoBehaviour
 
     public TextMeshProUGUI oleada_text;
 
+    public GameObject[] Objetivos_Originales;
+
 
     private void Start()
     {
@@ -130,58 +132,37 @@ public class Controlador_general : MonoBehaviour
 
     private void a_la_Derecha()
     {
+        //objetivos
+        Objetivos_Originales[0].transform.position = new Vector3(Objetivos_Originales[0].transform.position.x + distancia_reflejo(mapa, Objetivos_Originales[0]),
+                                                                Objetivos_Originales[0].transform.position.y,
+                                                                Objetivos_Originales[0].transform.position.z);
+        Objetivos_Originales[1].transform.position = new Vector3(Objetivos_Originales[1].transform.position.x + distancia_reflejo(mapa, Objetivos_Originales[1]),
+                                                                Objetivos_Originales[1].transform.position.y,
+                                                                Objetivos_Originales[1].transform.position.z);
+        Objetivos_Originales[2].transform.position = new Vector3(Objetivos_Originales[2].transform.position.x + distancia_reflejo(mapa, Objetivos_Originales[2]),
+                                                                Objetivos_Originales[2].transform.position.y,
+                                                                Objetivos_Originales[2].transform.position.z);
+        Objetivo_a_la_derecha(Objetivos_Originales[0]);
+
+
+        //ovulo
         Ovulo.GetComponent<Transform>().position = new Vector3(Ovulo.GetComponent<Transform>().position.x + distancia_reflejo(mapa, Ovulo),
                                                                 Ovulo.GetComponent<Transform>().position.y,
                                                                 Ovulo.GetComponent<Transform>().position.z);
 
-        //objetivos
-        int arr_obj_1;
-        arr_obj_1 = Spawner.GetComponent<creadorEnemigos>().Objetivos_1.Length;
-        for (int i = 0; i < arr_obj_1; i++)
+    }
+    private void Objetivo_a_la_derecha(GameObject origen)
+    {
+        int i = origen.GetComponent<EnemyObjetives>().objetives.Length;
+
+        for (int x = 0; x < i; x++)
         {
-            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position =
-                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i]),
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.y,
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_1[i].GetComponent<Transform>().position.z);
-        }
-        int arr_obj_2;
-        arr_obj_2 = Spawner.GetComponent<creadorEnemigos>().Objetivos_2.Length;
-        for (int i = 0; i < arr_obj_2; i++)
-        {
-            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position =
-                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i]),
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.y,
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_2[i].GetComponent<Transform>().position.z);
-        }
-        int arr_obj_3;
-        arr_obj_3 = Spawner.GetComponent<creadorEnemigos>().Objetivos_3.Length;
-        for (int i = 0; i < arr_obj_3; i++)
-        {
-            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position =
-                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i]),
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.y,
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_3[i].GetComponent<Transform>().position.z);
-        }
-        int arr_obj_4;
-        arr_obj_4 = Spawner.GetComponent<creadorEnemigos>().Objetivos_4.Length;
-        for (int i = 0; i < arr_obj_4; i++)
-        {
-            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position =
-                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i]),
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.y,
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_4[i].GetComponent<Transform>().position.z);
-        }
-        int arr_obj_5;
-        arr_obj_5 = Spawner.GetComponent<creadorEnemigos>().Objetivos_5.Length;
-        for (int i = 0; i < arr_obj_5; i++)
-        {
-            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position =
-                new Vector3(Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.x + distancia_reflejo(mapa, Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i]),
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.y,
-                            Spawner.GetComponent<creadorEnemigos>().Objetivos_5[i].GetComponent<Transform>().position.z);
+            origen.GetComponent<EnemyObjetives>().objetives[x].transform.position = new Vector3(origen.GetComponent<EnemyObjetives>().objetives[x].transform.position.x + distancia_reflejo(mapa, origen.GetComponent<EnemyObjetives>().objetives[x]),
+                                                                                                origen.GetComponent<EnemyObjetives>().objetives[x].transform.position.y,
+                                                                                                origen.GetComponent<EnemyObjetives>().objetives[x].transform.position.z);
         }
 
-
+        Objetivo_a_la_derecha(origen.GetComponent<EnemyObjetives>().objetives[0]);
     }
 
     private float distancia_reflejo(GameObject objeto1, GameObject objeto2)
