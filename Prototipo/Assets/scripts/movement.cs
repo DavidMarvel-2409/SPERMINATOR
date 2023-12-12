@@ -43,7 +43,7 @@ public class movement : MonoBehaviour
     {
         horizontalM = Input.GetAxisRaw("Horizontal");
         verticalM = Input.GetAxisRaw("Vertical");
-        shoot = Input.GetKey(KeyCode.Space);
+        shoot = Input.GetKeyDown(KeyCode.Space);
 
         movimiento = new Vector2(horizontalM, verticalM);
         movimiento.Normalize();
