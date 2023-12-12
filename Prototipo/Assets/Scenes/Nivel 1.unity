@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &41082455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3467,6 +3467,7 @@ MonoBehaviour:
   Panel_Win: {fileID: 23891064}
   Panel_Lose: {fileID: 1591205071}
   precentacion_jefe: {fileID: 2142527489}
+  tutorial: {fileID: 41082454}
   Menu_pausa: 0
   enemigos_en_escena: 0
   spawn_player: {fileID: 1671583731}

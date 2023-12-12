@@ -16,6 +16,7 @@ public class Controlador_general : MonoBehaviour
     public GameObject Panel_Win;
     public GameObject Panel_Lose;
     public GameObject precentacion_jefe;
+    public GameObject tutorial;
 
     public bool Menu_pausa;
 
@@ -107,6 +108,7 @@ public class Controlador_general : MonoBehaviour
         {
             case "Nivel 1":
                 //lo deja todo tal cual esta
+                tutorial.SetActive(true);
                 break;
             case "Nivel 2":
                 a_la_Derecha();

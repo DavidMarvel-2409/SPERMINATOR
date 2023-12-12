@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,12 +52,12 @@ public class Jefe : MonoBehaviour
         coor_player = new Vector2(Player.transform.position.x, Player.transform.position.y);
         coor_objective = new Vector2(Objetivo.transform.position.x, Objetivo.transform.position.y);
 
-        if (Vector2.Distance(coor_boss, coor_objective) > 5)
+        if (Vector2.Distance(coor_objective, coor_boss) < 5)
         {
             cambio_de_objetivo();
         }
 
-        Movimiento();
+        Movimiento(objtener_angulo(coor_boss, coor_objective));
 
         if (timeBtwShots <= 0)
         {
@@ -68,6 +69,7 @@ public class Jefe : MonoBehaviour
         {
             timeBtwShots -= Time.deltaTime;
         }
+        transform.position = coor_boss;
     }
 
     private void OnTriggerEnter2D(Collider2D npc)
@@ -114,11 +116,19 @@ public class Jefe : MonoBehaviour
         return a;
     }
 
-    private void Movimiento()
+    private void Movimiento(float angle)
     {
-        Vector2 movimiento = new Vector2(coor_objective.x - coor_boss.x, coor_objective.y - coor_boss.y);
-        movimiento.Normalize();
-        transform.Translate(movimiento * speed_boss * Time.deltaTime, Space.World);
+        coor_boss.x += (speed_boss * Mathf.Cos(angle)) * Time.deltaTime;
+        coor_boss.y += (speed_boss * Mathf.Sin(angle)) * Time.deltaTime;
+        transform.rotation = Quaternion.AngleAxis(angle-90, Vector3.forward);
+    }
+
+    private float objtener_angulo(Vector3 ob1, Vector3 ob2)
+    {
+        Vector3 _vector = ob2 - ob1;
+
+        float angle = Mathf.Atan2(_vector.y, _vector.x) * Mathf.Rad2Deg;
+        return angle;
     }
 
 }
