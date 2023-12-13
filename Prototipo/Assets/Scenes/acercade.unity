@@ -516,7 +516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 540074360}
   m_Layer: 5
-  m_Name: Tutorial Menus (1)
+  m_Name: cientifico
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -717,6 +717,12 @@ MonoBehaviour:
   texto: {fileID: 896091081}
   pantalla_dialogo: {fileID: 2007873708}
   cara2: {fileID: 0}
+  Pantallas_fuera_del_jefe:
+  - {fileID: 2007873708}
+  - {fileID: 540074359}
+  Imagenes_de_fondo:
+  - {fileID: 2019634100}
+  - {fileID: 1181466403}
   nave: {fileID: 0}
 --- !u!114 &896091081
 MonoBehaviour:
@@ -1107,6 +1113,12 @@ MonoBehaviour:
   texto: {fileID: 1400075199}
   pantalla_dialogo: {fileID: 540074359}
   cara2: {fileID: 0}
+  Pantallas_fuera_del_jefe:
+  - {fileID: 540074359}
+  - {fileID: 540074359}
+  Imagenes_de_fondo:
+  - {fileID: 1181466403}
+  - {fileID: 1181466403}
   nave: {fileID: 0}
 --- !u!114 &1400075199
 MonoBehaviour:
@@ -1683,7 +1695,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007873709}
   m_Layer: 5
-  m_Name: Tutorial Menus
+  m_Name: reportero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
