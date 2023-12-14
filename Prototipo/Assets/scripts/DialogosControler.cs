@@ -57,9 +57,9 @@ public class DialogosControler : MonoBehaviour
                     Pantallas_fuera_del_jefe[1].SetActive(true);
                     Pantallas_fuera_del_jefe[0].SetActive(false);
                 }
-                else if (Imagenes_de_fondo[0].name == "noticiados")
+                else if (Imagenes_de_fondo[0].name == "noticiasdos")
                 {
-                    //aqui falta colocar la wea para cuando se terminan los dialogos del cientifico (ya me quiero ir a la shit)
+                    SceneManager.LoadScene("title");
                 }
             }
 

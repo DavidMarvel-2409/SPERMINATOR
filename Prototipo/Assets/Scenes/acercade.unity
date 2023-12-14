@@ -1110,6 +1110,7 @@ MonoBehaviour:
     exitosamente este. '
   - Si las pruebas no son lo suficientemente buenas, me temo que tendremos que cancelar
     el proyecto, pero todo parece ir bien de momento. Seguiremos informando.
+  - Fin.
   texto: {fileID: 1400075199}
   pantalla_dialogo: {fileID: 540074359}
   cara2: {fileID: 0}
