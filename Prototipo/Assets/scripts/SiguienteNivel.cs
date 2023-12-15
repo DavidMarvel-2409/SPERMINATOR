@@ -7,6 +7,24 @@ public class SiguienteNivel : MonoBehaviour
 {
 
     public string escena;
+    private void Start()
+    {
+        if (this.gameObject.name == "Salir")
+        {
+            escena = "Title";
+        }
+        else
+        {
+            if (SceneManager.GetActiveScene().name == "Nivel 1")
+            {
+                escena = "Cinematica 2";
+            }
+            else if (SceneManager.GetActiveScene().name == "Nivel 2")
+            {
+                escena = "Cinematica 3";
+            }
+        }
+    }
     public void Cambio()
     {
         Time.timeScale = 1;

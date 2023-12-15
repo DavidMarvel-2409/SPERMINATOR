@@ -34,7 +34,9 @@ public class enemyScript : MonoBehaviour
 
     public int vida;
     public AudioSource Muerte;
-    [SerializeField] AudioClip Muerterial;
+    [SerializeField] AudioClip Muricion;
+    bool trigger;
+    public static enemyScript enemyisntance;
 
     void Start()
     {
@@ -52,9 +54,11 @@ public class enemyScript : MonoBehaviour
         }
         if (vida <= 0)
         {
+            if (Muerte.isPlaying == false && trigger == false)
+            {
+                trigger = true;
+            }
             me_muero();
-
-            //Muerte.PlayOneShot(Muerterial);
         }
 
     }
@@ -138,6 +142,7 @@ public class enemyScript : MonoBehaviour
     {
         eliminar_cola();
         Player.GetComponent<movement>().Enemigos_muertos++;
+        Droping();
         Destroy(this.gameObject);
     }
     public void eliminar_cola()

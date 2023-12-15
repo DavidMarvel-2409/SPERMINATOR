@@ -31,6 +31,13 @@ public class movement : MonoBehaviour
 
     public int Enemigos_muertos;
 
+    public static movement playerInstance;
+
+    private void Awake()
+    {
+        playerInstance = this;
+    }
+
     void Start()
     {
         varVida = 100;
