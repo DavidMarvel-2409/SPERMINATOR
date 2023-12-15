@@ -436,7 +436,7 @@ MonoBehaviour:
   EBPrefab: {fileID: 6833791935365827187, guid: 1036c50c657bcf745aeda6a3bf1e49e6, type: 3}
   Objetivo: {fileID: 0}
   Objetivo_central: {fileID: 0}
-  speed_boss: 5
+  speed_boss: 20
 --- !u!50 &8902719560647895540
 Rigidbody2D:
   serializedVersion: 4

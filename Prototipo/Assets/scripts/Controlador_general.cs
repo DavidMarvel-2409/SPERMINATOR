@@ -59,11 +59,11 @@ public class Controlador_general : MonoBehaviour
             precentacion_jefe.SetActive(true);
             Time.timeScale = 0;
             Spawner.GetComponent<creadorEnemigos>().final_boss = true;
-            //if (audiosource.isPlaying == false && trigger == false)
-            //{
-            //    audiosource.PlayOneShot(Jefe);
-            //    trigger = true;
-            //}
+            if (audiosource.isPlaying == false && trigger == false)
+            {
+              audiosource.PlayOneShot(Jefe);
+              trigger = true;
+            }
         }
 
         if (Vector3.Distance(Player1.transform.position, Ovulo.transform.position) < 120)
@@ -88,14 +88,22 @@ public class Controlador_general : MonoBehaviour
 
 
         if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1 
-            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos == 0)
+            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos == 0 && nivel != "Nivel 3")
         {
-            Panel_Win.SetActive(true);
-            Time.timeScale = 0;
+                Panel_Win.SetActive(true);
+                Time.timeScale = 0;
+            
+            //SceneManager.LoadScene("finalscene");
+        }
+        if (Inicio_oleada.GetComponent<Barra_Oleada>().tiempo <= 0.1
+            && enemigos_en_escena - Player1.GetComponent<movement>().Enemigos_muertos - 100 == 0 && nivel == "Nivel 3")
+        {
+            
+                Panel_Win.SetActive(true);
+                Time.timeScale = 0;
             //SceneManager.LoadScene("finalscene");
         }
 
-        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 0)

@@ -161,6 +161,11 @@ public class movement : MonoBehaviour
             Destroy(npc.gameObject);
         }
 
+        if (npc.gameObject.CompareTag("Boss"))
+        {
+            varVida -= 10;
+        }
+
         /*if (npc.gameObject.CompareTag("shootpower"))
         {
             espera = 0.1f;

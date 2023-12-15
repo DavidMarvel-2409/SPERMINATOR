@@ -12,6 +12,7 @@ public class TitleControl : MonoBehaviour
     {
         time = 0;
         coor = transform.position;
+        Time.timeScale = 1;
     }
     private void Update()
     {

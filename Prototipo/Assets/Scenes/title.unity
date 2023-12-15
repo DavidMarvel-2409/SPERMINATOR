@@ -1439,8 +1439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -17.28, y: -486.23}
-  m_SizeDelta: {x: 1815.44, y: 46.46}
+  m_AnchoredPosition: {x: -29.84, y: -457.37}
+  m_SizeDelta: {x: 1825.76, y: 134.17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800993907
 MonoBehaviour:
@@ -1463,7 +1463,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Videojuego creado por: Diego Ugarte, Oscar Montecinos, David Valdes, Sprites
-    y Assets Originales.'
+    y Assets Originales.
+
+    Musica y efectos de freesound:
+
+    Nothing can stop
+    progress, Retro Bubble Shot, Boiling, Videogame squat, video game death sound'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

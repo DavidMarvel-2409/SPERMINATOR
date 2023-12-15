@@ -82,6 +82,7 @@ public class creadorEnemigos : MonoBehaviour
                 if (spawn_espera > tiempo_spawn)
                 {
                     spawn_espera = 0;
+
                     switch (selec_spawn())
                     {
                         case 0:

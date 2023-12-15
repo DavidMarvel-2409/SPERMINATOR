@@ -52,10 +52,23 @@ public class Jefe : MonoBehaviour
         coor_player = new Vector2(Player.transform.position.x, Player.transform.position.y);
         coor_objective = new Vector2(Objetivo.transform.position.x, Objetivo.transform.position.y);
 
-        if (Vector2.Distance(coor_objective, coor_boss) < 5)
+        if (Vector3.Distance(coor_player, coor_boss) < 50)
         {
-            cambio_de_objetivo();
+            Objetivo = Player;
         }
+        else
+        {
+            if (Objetivo == Player)
+            {
+                Objetivo = Objetivo_central;
+            }
+            if (Vector2.Distance(coor_objective, coor_boss) < 5)
+            {
+                cambio_de_objetivo();
+            }
+        }
+
+
 
         Movimiento(objtener_angulo(coor_boss, coor_objective));
 
@@ -91,6 +104,7 @@ public class Jefe : MonoBehaviour
             vida -= 5;
             if (vida<=0)
             {
+                Player.GetComponent<movement>().Enemigos_muertos+= 100;
                 Destroy(gameObject);
             }
         }

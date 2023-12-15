@@ -7744,6 +7744,10 @@ PrefabInstance:
       propertyPath: rial_disparo
       value: 
       objectReference: {fileID: 612398840}
+    - target: {fileID: 3077173560539602346, guid: 461a87a1d64df964481607fbf4eb4a83, type: 3}
+      propertyPath: shootCooldown
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3186374088574881688, guid: 461a87a1d64df964481607fbf4eb4a83, type: 3}
       propertyPath: m_LocalPosition.x
       value: 58
