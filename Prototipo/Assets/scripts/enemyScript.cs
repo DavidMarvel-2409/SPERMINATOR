@@ -33,9 +33,12 @@ public class enemyScript : MonoBehaviour
     public string nombre_drop;
 
     public int vida;
+    public AudioSource Muerte;
+    [SerializeField] AudioClip Muerterial;
 
     void Start()
     {
+        Muerte = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -50,6 +53,8 @@ public class enemyScript : MonoBehaviour
         if (vida <= 0)
         {
             me_muero();
+
+            //Muerte.PlayOneShot(Muerterial);
         }
 
     }

@@ -204,31 +204,13 @@ MonoBehaviour:
   Name_meco: Rex
   Ovulo: {fileID: 0}
   Player: {fileID: 0}
-  Objetivos_1_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Objetivos_2_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Objetivos_3_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Objetivos_4_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Objetivos_5_:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   Objetivo_Auxiliar: {fileID: 0}
   _cola_: {fileID: 0}
   drop: {fileID: 0}
   nombre_drop: Nada
   vida: 2
+  Muerte: {fileID: 0}
+  Muerterial: {fileID: 0}
 --- !u!61 &3741999712203248227
 BoxCollider2D:
   m_ObjectHideFlags: 0

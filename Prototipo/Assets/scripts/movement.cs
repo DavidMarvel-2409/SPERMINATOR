@@ -14,6 +14,8 @@ public class movement : MonoBehaviour
 
     public float espera;
     public AudioSource Sonido_Disparo;
+    public AudioSource rial_disparo;
+    [SerializeField] AudioClip moverse;
     private float espera_original;
 
     public int rest;
@@ -53,6 +55,17 @@ public class movement : MonoBehaviour
         {
             angulo = Mathf.Atan2(movimiento.y, movimiento.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, angulo), velocidadRotacion * Time.deltaTime);
+            //Sonido_Disparo.PlayOneShot(moverse);
+
+            if (Sonido_Disparo.isPlaying == false)
+            {
+                Sonido_Disparo.clip = moverse;
+                Sonido_Disparo.Play();
+            }
+        }
+
+        else {
+            Sonido_Disparo.Pause();
         }
 
         if (shoot && Time.timeScale > 0)
@@ -84,7 +97,7 @@ public class movement : MonoBehaviour
             
             // Reiniciar el temporizador de disparo
             shootCooldown = Time.time + espera; // Ajusta el valor según la velocidad de disparo deseada
-            Sonido_Disparo.Play();
+            rial_disparo.Play();
         }
     }
 

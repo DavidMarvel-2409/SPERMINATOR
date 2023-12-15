@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,6 +13,9 @@ public class Controlador_general : MonoBehaviour
     public GameObject Ovulo;
     public GameObject panel_pausa;
     private string nivel;
+    public AudioSource audiosource;
+    [SerializeField] AudioClip Muerte_jugador;
+    [SerializeField] AudioClip Jefe;
 
     public GameObject Panel_Win;
     public GameObject Panel_Lose;
@@ -30,11 +34,13 @@ public class Controlador_general : MonoBehaviour
     public TextMeshProUGUI oleada_text;
 
     public GameObject[] Objetivos_Originales;
+    private bool trigger = false;
 
 
     private void Start()
     {
         nivel = SceneManager.GetActiveScene().name;
+        audiosource = GetComponent<AudioSource>();
         Menu_pausa = false;
         enemigos_en_escena = 0;
         if (spawn_player.activeInHierarchy == true)
@@ -53,6 +59,11 @@ public class Controlador_general : MonoBehaviour
             precentacion_jefe.SetActive(true);
             Time.timeScale = 0;
             Spawner.GetComponent<creadorEnemigos>().final_boss = true;
+            //if (audiosource.isPlaying == false && trigger == false)
+            //{
+            //    audiosource.PlayOneShot(Jefe);
+            //    trigger = true;
+            //}
         }
 
         if (Vector3.Distance(Player1.transform.position, Ovulo.transform.position) < 120)
@@ -65,8 +76,14 @@ public class Controlador_general : MonoBehaviour
         if ( Ovulo.GetComponent<uterScript>().vidaUter <= 0 || Player1.GetComponent<movement>().varVida == 0)
         {
             //SceneManager.LoadScene("Perdida");
+            //audiosource.PlayOneShot(Muerte_jugador);
             Time.timeScale = 0;
             Panel_Lose.SetActive(true);
+            //audiosource.PlayOneShot(Muerte_jugador);
+            if (audiosource.isPlaying == false && trigger==false) {
+                audiosource.PlayOneShot(Muerte_jugador);
+                trigger = true;
+            }
         }
 
 

@@ -209,6 +209,8 @@ MonoBehaviour:
   drop: {fileID: 0}
   nombre_drop: Nada
   vida: 1
+  Muerte: {fileID: 0}
+  Muerterial: {fileID: 0}
 --- !u!61 &3741999712203248227
 BoxCollider2D:
   m_ObjectHideFlags: 0
