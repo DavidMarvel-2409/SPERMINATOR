@@ -23,6 +23,10 @@ public class SiguienteNivel : MonoBehaviour
             {
                 escena = "Cinematica 3";
             }
+            else if (SceneManager.GetActiveScene().name == "Nivel 3")
+            {
+                escena = "finalscene";
+            }
         }
     }
     public void Cambio()

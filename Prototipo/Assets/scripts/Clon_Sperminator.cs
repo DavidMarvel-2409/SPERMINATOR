@@ -13,7 +13,14 @@ public class Clon_Sperminator : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(Sperminator.transform.position.x + 700, Sperminator.transform.position.y, transform.position.z);
-        transform.rotation = Sperminator.transform.rotation;
+        if (Sperminator == null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            transform.position = new Vector3(Sperminator.transform.position.x + 700, Sperminator.transform.position.y, transform.position.z);
+            transform.rotation = Sperminator.transform.rotation;
+        }
     }
 }

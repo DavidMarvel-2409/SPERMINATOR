@@ -61,6 +61,9 @@ public class DialogosControler : MonoBehaviour
                 {
                     SceneManager.LoadScene("title");
                 }
+            }else if (nivel == "finalscene")
+            {
+                SceneManager.LoadScene("title");
             }
 
         }

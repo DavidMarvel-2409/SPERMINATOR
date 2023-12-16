@@ -142,7 +142,11 @@ public class enemyScript : MonoBehaviour
     {
         eliminar_cola();
         Player.GetComponent<movement>().Enemigos_muertos++;
-        Droping();
+        if (nombre_drop != "Nada")
+        {
+            Droping();
+        }
+        
         Destroy(this.gameObject);
     }
     public void eliminar_cola()
